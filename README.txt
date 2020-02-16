@@ -1,1 +1,1 @@
-Projetos realizados com a linguagem Python com Orientação a Objetos.
+Projetos realizados durante a graduação de Sistemas de Informação na Universidade Federal de Santa Catarina.
