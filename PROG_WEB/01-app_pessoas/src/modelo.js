@@ -25,7 +25,8 @@ class Pessoa {
  * @returns [Pessoa]
  */
 function selecionaPessoas (pessoas, idadeLimite) {
-  // FIXME Bug 
+  // FIXME Bug
+
   return pessoas
 }
 
