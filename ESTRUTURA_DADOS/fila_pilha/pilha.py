@@ -5,13 +5,19 @@ class Pilha:
     
     def empilha(self, elemento):
         self.dados.append(elemento)
+        self.printa()
 
     def vazia(self):
-        if len(self.dados) == 0:
-            return True
-        else: return False
+        return len(self.dados) == 0
 
     def desempilha(self):
         if not self.vazia():
-            return self.dados.pop(-1)
-        else: return print("A pilha esta vazia")
+            self.printa()
+            print(self.dados.pop(-1))
+            self.printa()
+        elif self.vazia():
+            print("Lista vazia.")
+
+    def printa(self):
+        return print(str(self.dados).replace(',', ' ').
+            replace('[','').replace(']',''))

@@ -2,25 +2,28 @@ class Fila:
     def __init__(self, dados: []):
         if type(dados) == list:
             self.dados = dados
-            print(self.dados)
+            self.printa()
         else:
             return print("Adicione uma lista.")
 
     def insere(self, elemento):
         self.dados.append(elemento)
-        print(self.dados)
+        self.printa()
     
     def retira(self):
-        if self.vazia() is not True:
-            print(self.dados.pop(0))
-            print(self.dados)
+        if self.vazia():
+            print('Lista vazia.')
+        else:
+            print(self.dados.pop(0), "Eliminado")
+            if self.vazia():
+                print("A fila acabou.")
+            else: self.printa()
 
     def vazia(self):
-        if len(self.dados) == int(0):
-            print('A fila esta vazia.')
-            return True
-        else:
-            return False
-            
+        return len(self.dados) == 0
+
+    def printa(self):
+        return print(str(self.dados).replace(',', ' ').
+            replace('[','').replace(']',''))
 
     
