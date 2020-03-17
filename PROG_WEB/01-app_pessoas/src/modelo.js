@@ -26,8 +26,14 @@ class Pessoa {
  */
 function selecionaPessoas (pessoas, idadeLimite) {
   // FIXME Bug
+  var p = []
+  for (var i = 0; i < pessoas.length; i++) {
+    if (pessoas[i].idade > idadeLimite){
+      p.push(pessoas[i])
+    }
+  }
 
-  return pessoas
+  return p
 }
 
 // Dados fictícios

@@ -1,0 +1,8 @@
+1 - o app.js só roda 1 vez, na execução do servidor
+
+2 - o node.js não é um servidor web.
+
+3 - "const servidor = https.createServer(opcoes, (req, res) => atendeRequisicao(res))" 
+Quantas vezes a linha será requisitada se forem feitas 50 requisições ao servidor? -----> 0 vezes, só será requisitada na criação do servidor
+
+4 - 
