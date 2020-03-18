@@ -35,7 +35,15 @@ class Equipe {
 
   encontreAtletasComAlturmaMinima (alturaMinima) {
     // FIXME bug!
-    return this.__atletas
+    var time = this.atletas
+    var timeAltura = []
+    for (var i = 0; i < time.length; i++) {
+      if (time[i].altura >= alturaMinima){
+        timeAltura.push(time[i])
+      }
+    }
+  
+    return timeAltura
   }
 }
 

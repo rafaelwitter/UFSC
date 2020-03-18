@@ -3,6 +3,12 @@
 2 - o node.js não é um servidor web.
 
 3 - "const servidor = https.createServer(opcoes, (req, res) => atendeRequisicao(res))" 
-Quantas vezes a linha será requisitada se forem feitas 50 requisições ao servidor? -----> 0 vezes, só será requisitada na criação do servidor
+Quantas vezes a linha será requisitada se forem feitas 50 requisições ao servidor? -----> 0 vezes, só será requisitada na criação do servidor, só a função atendeRequisicao(res) será executada 50 vezes.
 
-4 - 
+4 - Analise o código no arquivo modelo.js. Há alguma linha que mostre que este arquivo faz parte de uma aplicação para web? ----> Não
+
+5 - 
+
+6 - 
+
+7 - 
