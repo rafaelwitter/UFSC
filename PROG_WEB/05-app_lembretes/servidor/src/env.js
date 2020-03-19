@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import dotenv from 'dotenv'
-
 dotenv.config()
 
 // Variáveis de ambiente, acessadas via process.env, devem ser
