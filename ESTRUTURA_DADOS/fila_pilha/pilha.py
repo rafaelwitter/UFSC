@@ -21,3 +21,6 @@ class Pilha:
     def printa(self):
         return print(str(self.dados).replace(',', ' ').
             replace('[','').replace(']',''))
+
+    def retorna_topo(self):
+        return print(str(self.dados[-1]))
