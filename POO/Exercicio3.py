@@ -20,7 +20,8 @@ class Matrizes:
         if i - 1 >= 0 and j - 1 >= 0 and A[i-1][j-1] is -1:
             contador += 1
         print(contador)
-    def quadradoMagico(A): #Exercicio_4 Dizemos que uma matriz quadrada inteira é um quadrado mágico se a
+    def quadradoMagico(A): 
+        #Exercicio_4 Dizemos que uma matriz quadrada inteira é um quadrado mágico se a
         #soma dos elementos de cada linha, a soma dos elementos de cada coluna e a soma dos elementos das
         #diagonais principal e secundária são todas iguais.
         n_linhas = len(A)
