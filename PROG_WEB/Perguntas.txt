@@ -12,3 +12,7 @@ Quantas vezes a linha será requisitada se forem feitas 50 requisições ao serv
 6 - 
 
 7 - 
+
+Texto Base
+/* https://blog.matheuscastiglioni.com.br/criando-um-servidor-em-node-com-express */
+
