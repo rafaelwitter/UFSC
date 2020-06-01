@@ -7,7 +7,7 @@ Quantas vezes a linha será requisitada se forem feitas 50 requisições ao serv
 
 4 - Analise o código no arquivo modelo.js. Há alguma linha que mostre que este arquivo faz parte de uma aplicação para web? ----> Não
 
-5 - 
+5 - Protocolo é SOAP. Rest é um design de arquitetura para serviços web. 
 
 6 - 
 
