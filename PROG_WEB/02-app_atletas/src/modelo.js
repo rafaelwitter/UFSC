@@ -34,9 +34,7 @@ class Equipe {
   }
 
   encontreAtletasComAlturmaMinima (alturaMinima) {
-    // FIXME bug!
     const atletasSelicionados = this.atletas.filter(a => a.altura >= alturaMinima)
-  
     return atletasSelicionados
   }
 }

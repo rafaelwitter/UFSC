@@ -104,7 +104,7 @@ export default function App () {
     <div className='container is-fluid'>
       <div className='message'>
         <div className='message-header'>
-            UFSC - CTC - INE - INE5646 :: App Fim do Mundo
+            UFSC - CTC - INE - INE5646 :: App Fim do Mundo Rafael Witt
         </div>
         <div className='message-body'>
           <DataNASA onDataValida={onDataValida} onDataInvalida={onDataInvalida}/>

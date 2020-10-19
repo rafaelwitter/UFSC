@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
+import App from './App'
 
 
 function useModelo() {
@@ -39,11 +40,10 @@ const DataNASA = (props) => {
     setData(novaData)
     if (validaData(novaData)) {
       props.onDataValida(novaData)
-    } else {
-      // FIXME Algo deve ser feito quando a data for inválida. Dica: analise props
-      props.onDataValida('2020-03-19')
-    }
-  }
+    } 
+    else (validaData(novaData)) 
+      props.onDataInvalida()
+      
 
   return (
     <input className='input'

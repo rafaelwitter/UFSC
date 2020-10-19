@@ -6,7 +6,7 @@ import {Chart} from 'primereact/chart'
 import 'primereact/resources/themes/nova-light/theme.css'
 import 'primereact/resources/primereact.min.css'
 import 'primeicons/primeicons.css'
-
+import { ProgressBar } from 'primereact/progressbar'
 
 const EnumSituacao = {
   INICIAL : 0,
@@ -61,12 +61,14 @@ export default function App () {
   const [estado, {buscaDados, fechaGrafico}] = useModelo()
 
   let conteudo
-  // FIXME Falta avisar o usuário que os dados estão sendo obtidos no servidor.
-  // Na forma atual, o usuário pode pensar que a aplicação parou de funcionar.
-  
   switch (estado.situacao) {
   case EnumSituacao.INICIAL: {
     conteudo = <Button label='Obter Dados' onClick={() => buscaDados()}/>
+    break
+  }
+  case EnumSituacao.PESQUISANDO: {
+    
+    conteudo = <ProgressBar mode="indeterminate" onClick={() => buscaDados()}/>
     break
   }
   
@@ -90,7 +92,7 @@ export default function App () {
   }
 
   return (
-    <Panel header='UFSC - CTC - INE - INE5646 :: App Visitantes'>
+    <Panel header='UFSC - CTC - INE - INE5646 :: App Visitantes by Rafael Witt'>
       <div>{conteudo}</div>
     </Panel>
   )

@@ -25,7 +25,6 @@ class Pessoa {
  * @returns [Pessoa]
  */
 function selecionaPessoas (pessoas, idadeLimite) {
-  // FIXME Bug
   const pessoasSelecionadas = pessoas.filter(p => p.idade > idadeLimite)
   return pessoasSelecionadas
 }

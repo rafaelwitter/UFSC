@@ -6,11 +6,11 @@ class Fila:
         else:
             return print("Adicione uma lista.")
 
-    def insere(self, elemento):
+    def entrar(self, elemento):
         self.dados.append(elemento)
         self.printa()
     
-    def retira(self):
+    def sair(self):
         if self.vazia():
             print('Lista vazia.')
         else:

@@ -24,6 +24,8 @@ if (comErro) {
   process.exit(1)
 }
 
+
 const PORTA = parseInt(process.env.PORTA)
 const NASA_API_KEY = process.env.NASA_API_KEY
-export { PORTA, NASA_API_KEY }
+if (comErro === false){
+  export { PORTA, NASA_API_KEY }}

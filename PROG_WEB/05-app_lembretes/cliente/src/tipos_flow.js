@@ -8,3 +8,9 @@ export type Lembrete = {|
     _id: string,
     texto: string
 |}
+
+export type Autor = {|
+    nome: string,
+    matricula: number
+  |}
+
