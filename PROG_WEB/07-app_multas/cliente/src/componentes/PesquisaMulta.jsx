@@ -136,9 +136,10 @@ function PesquisaMulta (props: PropsPesquisaMulta) {
   function onSubmit(ev) {
     ev.preventDefault() // evita envio de requisição ao servidor
     // FIXME Bug Não está acionando o modelo para informar que o usuário deseja pesquisar uma multa.
+    dispatch({type: 'PESQUISE_MULTA'})
   }
 
-  const aMulta = estado.multa !== undefined ? <ExibeMulta multa={estado.multa}/> : undefined
+  const aMulta = estado.multa !== undefined ? <ExibeMulta multa={estado.multa}/> : onSubmit
 
   return (
     <Panel header='Pesquisar Multa'>
