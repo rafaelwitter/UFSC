@@ -11,7 +11,7 @@ async function fazCadastro (login: string, senha: string) {
   if (resposta.ok) { return resposta.token } else { throw new Error(resposta.message) }
 }
 
-async function fazLogin (login: string, senha: string) {
+async function fazLogin (login: string, senha: string): Promise<Token> {
   let resposta = await executaPOST('/cmdFacaLogin', { login, senha })
   if (resposta.ok) { return resposta.token } else { throw new Error(resposta.message) }
 }

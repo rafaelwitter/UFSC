@@ -71,7 +71,7 @@ function reducer(estado: Estado, acao: Acao): Estado {
 
   switch (acao.type) {
   case 'ARMAZENE_LOGIN':
-    return { ...estadoInicial, login: acao.login }
+    return { ...estadoInicial, login: acao.login, novoUsuario: estado.novoUsuario }
 
   case 'ARMAZENE_SENHA':
     return { ...estado, senha: acao.senha, msg: undefined }
@@ -166,6 +166,7 @@ function Login(props: Props) {
 
           <label className='checkbox'>
             <input type='checkbox'
+              checked={estado.novoUsuario}
               value={estado.novoUsuario}
               onChange={() => dispatch({ type: 'ARMAZENE_NOVO_USUARIO' })} />
             novo usuário

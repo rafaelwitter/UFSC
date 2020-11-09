@@ -67,8 +67,6 @@ class Pedido {
   }
 }
   
-  
-  
 class PedidoProcessado {
   
   static fromJSON(pedidoProcessado) {
@@ -117,5 +115,5 @@ class PedidoProcessado {
   }
 }
   
-export {Produto, Pedido, ProdutoProcessado, PedidoProcessado }
+export {Produto, Pedido, ProdutoProcessado, PedidoProcessado, autores }
   

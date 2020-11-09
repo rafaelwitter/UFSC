@@ -1,6 +1,6 @@
 //@flow
 import React from 'react'
-
+import VerificaMembros from './VerificaMembros.jsx'
 import VerificaPedidos from './VerificaPedidos.jsx'
 import 'bulma/css/bulma.min.css'
 
@@ -12,7 +12,7 @@ function App () {
     <div className='container is-fluid'>
       <div className="message is-dark">
         <div className="message-header">
-          UFSC - CTC - INE - INE5646 :: Apps Compra e Vende :: Vendedor
+          UFSC - CTC - INE - INE5646 :: Apps Compra e Vende Grupo C :: Vendedor
         </div>
         <div className="message-body">
           <div className='columns'>

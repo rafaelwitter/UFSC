@@ -28,7 +28,7 @@ function IU () {
     <div className="container is-fluid">
       <div className="message">
         <div className="message-header">
-          UFSC - CTC - INE - INE5646 :: App Filmes
+          UFSC - CTC - INE - INE5646 :: App Filmes edited by Rafael Witt
         </div>
         <div className="message-body">
           <div className="columns">

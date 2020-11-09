@@ -59,6 +59,7 @@ function montaLinha (idFilmeSelecionado, idTitulo, quandoSelecionado) {
 function montaBotao (idFilmeSelecionado, idFilme, quandoSelecionado) {
   let botao 
   if (idFilmeSelecionado !== idFilme)
+  //Outro metodo de verificação atraves do ===
   //botao = idFilmeSelecionado === idFilme ? null : 
     botao =
     <BotaoDetalhes
