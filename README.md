@@ -3,7 +3,7 @@
 ### Projetos WEB: 
 >- [NodeJs + Frameworks](https://github.com/rafaelwitter/UFSC/tree/master/PROG_WEB)
 
-### Projetos de Orientação a Objetjetos
+### Projetos de Orientação a Objetos:
 > -  [POO em Python](https://github.com/rafaelwitter/UFSC/tree/master/POO)
 > -  [DSOO em Python](https://github.com/rafaelwitter/UFSC/tree/master/DSOO)
 >     -  [Projeto final da matéria incluindo GUI e banco de dados serializado](https://github.com/rafaelwitter/UFSC/tree/master/DSOO/T1_V3)
