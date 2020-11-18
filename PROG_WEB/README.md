@@ -3,10 +3,10 @@
 
 ## Exercícios
 
-> Este repositório contém os exercícios realizados durante as aulas para aprendizado dos frameworks
+> - Este repositório contém os exercícios realizados durante as aulas para aprendizado dos frameworks
 
 ## Linguagens Utilizadas:
-- JavaScript, NodeJS, ReactJS
+> - JavaScript, NodeJS, ReactJS
 - HTML e CSS
 
 
