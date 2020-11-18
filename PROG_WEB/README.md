@@ -4,9 +4,6 @@
 ## Exercícios
    - Este repositório contém os exercícios realizados durante as aulas para aprendizado dos frameworks
 
-
-[========]
-
 ## Linguagens utilizadas:
    - [JavaScript](https://developer.mozilla.org/pt-BR/docs/Aprender/JavaScript), [NodeJS](https://nodejs.org/en/), [ReactJS](https://pt-br.reactjs.org/)
    - [TypeScript](https://www.typescriptlang.org/)
@@ -39,5 +36,4 @@
    - [IPQUALITYSCORE](https://www.ipqualityscore.com/documentation/email-validation/overview)
    - [MLab](https://mlab.com/)
 
-[========]
 
