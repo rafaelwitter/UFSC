@@ -6,5 +6,5 @@
 ### Projetos de Orientação a Objetjetos
 > -  [POO em Python](https://github.com/rafaelwitter/UFSC/tree/master/POO)
 > -  [DSOO em Python](https://github.com/rafaelwitter/UFSC/tree/master/DSOO)
-	-  [Projeto final da matéria incluindo GUI e banco de dados serializado](https://github.com/rafaelwitter/UFSC/tree/master/DSOO/T1_V3)
+>  -  [Projeto final da matéria incluindo GUI e banco de dados serializado](https://github.com/rafaelwitter/UFSC/tree/master/DSOO/T1_V3)
 
