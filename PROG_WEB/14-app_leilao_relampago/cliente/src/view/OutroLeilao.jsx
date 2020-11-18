@@ -47,8 +47,14 @@ export default function OutroLeilao(props: Props) {
   // FIXME Um comprador pode abandonar um leilão se o produto ainda não tiver
   // recebido alguma oferta ou então se a melhor oferta for de outro comprador.
   function podeAbandonar() {
-    return props.leilao.produto.melhorOferta === null 
+    if (ofertaInvalida()){
+      return props.leilao.produto.melhorOferta === null }
+    else {
+      return props.leilao.produto.
+    }
+
   }
+  
 
   let cor
   let cabecalho

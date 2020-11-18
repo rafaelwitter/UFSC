@@ -17,7 +17,8 @@
     "moleculer": "^0.13.12",
     "nats": "^1.4.0",
     "node-fetch": "^2.6.0",
-    "nodemailer": "^6.4.2"
+    "nodemailer": "^6.4.2",
+    "saslprep": "^1.0.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

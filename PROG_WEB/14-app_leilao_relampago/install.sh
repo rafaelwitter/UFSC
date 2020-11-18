@@ -1,0 +1,1 @@
+cd cliente && npm install && cd ../servidor && npm install

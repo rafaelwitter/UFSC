@@ -19,7 +19,8 @@
     "moleculer": "^0.13.12",
     "mongodb": "^3.5.2",
     "nats": "^1.4.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "saslprep": "^1.0.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

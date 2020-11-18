@@ -1,0 +1,1 @@
+cd cliente && npm run build && cd ../servidor && npm run build && nohup node build/app.js &

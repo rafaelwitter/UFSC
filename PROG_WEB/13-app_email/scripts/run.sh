@@ -14,4 +14,5 @@ cd servidor
 node build/app.js &
 cd ..
 cd ..
-
+cd nats 
+./run.sh 
