@@ -1,32 +1,49 @@
 from node import Node
+
+
 class ArvoreBinaria:
-    def __init__(self):
-        self.raiz = Node(None, None, None)
-        self.raiz = None
+    def __init__(self, data=None, node=None):
+        if node:
+            self.raiz = node
+        elif data:
+            node = Node(data)
+            self.raiz = node
+        else:
+            self.raiz = data
 
-    def insere_elemento(self, dado: int):
-        novo_no = Node(dado, None, None) #Cria um novo item
-        if self.raiz == None:
-            self.raiz = novo_no
-        else: #Se nao for a raiz
-            atual = self.raiz
-            while True:
-                anterior = atual
-                if dado <= atual.dado: #Insere esquerda
-                    atual = atual.proximo_esquerda
-                    if atual == None:
-                        anterior.proximo_esquerda = novo_no
-                        return
-                else: #Vai para direita
-                    atual = atual.proximo_direita
-                    if atual == None:
-                        anterior.proximo_direita = novo_no
-                        return
+    def percurso_simetrico(self, node=None):
+        """return symmetric values"""
+        if node is None:
+            node = self.raiz
+        if node.esquerda:
+            self.percurso_simetrico(node.esquerda)
+        print(node, end=' ')
+        if node.direita:
+            self.percurso_simetrico(node.direita)
 
-    def __repr__(self):
-        return str(self._raiz)
+    def percurso_posordem(self, node=None):
+        if node is None:
+            node = self.raiz
+        if node.esquerda:
+            self.percurso_posordem(node.esquerda)
+        if node.direita:
+            self.percurso_posordem(node.direita)
+        print(node)
 
-arvore = ArvoreBinaria(10)
-arvore.insere_elemento(8)
-arvore.insere_elemento(22)
-print(arvore)
+    def altura(self, node=None):
+        if node is None:
+            node = self.raiz
+        h_esq = 0
+        if node.esquerda:
+            h_esq = self.altura(node.esquerda)
+        h_dir = 0
+        if node.direita:
+            h_dir = self.altura(node.direita)
+        if h_dir > h_esq:
+            return h_dir + 1
+        return h_esq + 1
+
+
+if __name__ == "__main__":
+    array = [61, 89, 66, 43, 51, 16, 55, 11, 79, 77, 82, 32]
+    arvore = ArvoreBinaria(61)

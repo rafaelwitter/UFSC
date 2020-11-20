@@ -59,4 +59,4 @@ class Queue:
 q = Queue()
 q.entrar(2)
 q.entrar(4)
-q(fila)
+print(q)
