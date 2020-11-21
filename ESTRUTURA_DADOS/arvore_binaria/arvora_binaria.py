@@ -1,4 +1,4 @@
-from collections import deque
+from ESTRUTURA_DADOS.arvore_binaria.fila import Queue
 
 RAIZ = "raiz"
 
@@ -23,17 +23,18 @@ class ArvoreBinaria:
         else:
             self.raiz = data
 
-    def ordem_simetrica(self, node=None):
-        """retorna os valores simétricos"""
+    def in_order(self, node=None):
+        """retorna da menor folha para a maior. Ordem crescente"""
         if node is None:
             node = self.raiz
         if node.esquerda:
-            self.ordem_simetrica(node.esquerda)
+            self.in_order(node.esquerda)
         print(node, end=' ')
         if node.direita:
-            self.ordem_simetrica(node.direita)
+            self.in_order(node.direita)
 
     def pos_ordem(self, node=None):
+        """Percorre a esquerda, depois a direita entao visita a raiz"""
         if node is None:
             node = self.raiz
         if node.esquerda:
@@ -47,9 +48,9 @@ class ArvoreBinaria:
         if node is None:
             node = self.raiz
         h_esq = 0
+        h_dir = 0
         if node.esquerda:
             h_esq = self.altura(node.esquerda)
-        h_dir = 0
         if node.direita:
             h_dir = self.altura(node.direita)
         if h_dir > h_esq:
@@ -60,14 +61,14 @@ class ArvoreBinaria:
         """Retorna os valores dos níveis das arvores"""
         if node == RAIZ:
             node = self.raiz
-            fila = deque()
-            fila.append(node)
+        fila = Queue()
+        fila.push(node)
         while len(fila):
-            node = fila.popleft()
+            node = fila.pop()
             if node.esquerda:
-                fila.append(node.esquerda)
+                fila.push(node.esquerda)
             if node.direita:
-                fila.append(node.direita)
+                fila.push(node.direita)
             print(node, end=" ")
 
 
@@ -99,3 +100,45 @@ class ArvoreBinariaBusca(ArvoreBinaria):
         if valor < node.dado:
             return self._busca(valor, node.esquerda)
         return self._busca(valor, node.direita)
+
+    def min(self, node=RAIZ):
+        if node == RAIZ:
+            node = self.raiz
+        while node.esquerda:
+            node = node.esquerda
+        return node.dado
+
+    def max(self, valor=RAIZ):
+        if valor == RAIZ:
+            node = self.raiz
+        while node.direita:
+            node = node.direita
+        return node.dado
+
+    def remove(self, valor, node=RAIZ):
+        # Se for o valor padrão, executa a partir da raiz
+        if node == RAIZ:
+            node = self.raiz
+        # Se desceu até um ramo nulo, não há nada a fazer
+        if node is None:
+            return node
+        # Se o valor for menor, desce à esquerda
+        if valor < node.dado:
+            node.esquerda = self.remove(valor, node.esquerda)
+        # Se o valor for maior, desce à direita
+        elif valor > node.dado:
+            node.direita = self.remove(valor, node.direita)
+        # Se não for nem menor, nem maior, encontramos! Vamos remover...
+        else:
+            if node.esquerda is None:
+                return node.direita
+            elif node.direita is None:
+                return node.esquerda
+            else:
+                # Substituto é o sucessor do valor a ser removido
+                substituto = self.min(node.direita)
+                # Ao invés de trocar a posição dos nós, troca o valor
+                node.dado = substituto
+                # Depois, remove o substituto da subárvore à direita
+                node.direita = self.remove(substituto, node.direita)
+        return node
