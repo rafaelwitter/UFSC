@@ -19,7 +19,7 @@ def arvore_exemplo():
     return arv
 
 
-def main():
+def teste_arvore_exemplo():
     bst = arvore_exemplo()
 
     print("Arvore em ordem crescente")
@@ -48,4 +48,4 @@ def main():
     print(s)
 
 
-main()
+teste_arvore_exemplo()
