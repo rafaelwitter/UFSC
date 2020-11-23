@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4472f17b-39a1-402e-9890-1a6a1275e896" name="Default Changelist" comment="Atualizado os arquivos fila_pilha e arvores_binarias de ESTRUTURA_DADOS" />
+    <list default="true" id="4472f17b-39a1-402e-9890-1a6a1275e896" name="Default Changelist" comment="Atualizado os arquivos fila_pilha e arvores_binarias de ESTRUTURA_DADOS">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Organização, sistemas e metódos /1ª lista_2020_1.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Organização,sistemas_e_metodos/1ª lista_2020_1.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Organização, sistemas e metódos /3ª Avaliação 2020_1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Organização,sistemas_e_metodos/3ª Avaliação 2020_1.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Organização, sistemas e metódos /4ª Avaliação 2020_1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Organização,sistemas_e_metodos/4ª Avaliação 2020_1.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Organização, sistemas e metódos /Evolução dos modelos organizacionais.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Organização,sistemas_e_metodos/Evolução dos modelos organizacionais.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Organização, sistemas e metódos /Princípios de Administração_Fayol.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Organização,sistemas_e_metodos/Princípios de Administração_Fayol.docx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -277,7 +284,35 @@
       <option name="project" value="LOCAL" />
       <updated>1606097840538</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Atualização">
+      <created>1606099049409</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1606099049409</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Atualização">
+      <created>1606099060548</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1606099060548</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Atualização">
+      <created>1606099122006</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1606099122006</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Atualização">
+      <created>1606099137286</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1606099137286</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -304,7 +339,8 @@
     <MESSAGE value="Adicionado a remoção de elementos da arvore binária" />
     <MESSAGE value="Atualizado arquivos de ESTRUTURA_DADOS" />
     <MESSAGE value="Atualizando" />
-    <option name="LAST_COMMIT_MESSAGE" value="Atualizando" />
+    <MESSAGE value="Atualização" />
+    <option name="LAST_COMMIT_MESSAGE" value="Atualização" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
