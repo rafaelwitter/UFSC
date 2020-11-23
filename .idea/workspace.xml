@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4472f17b-39a1-402e-9890-1a6a1275e896" name="Default Changelist" comment="Atualizado os arquivos fila_pilha e arvores_binarias de ESTRUTURA_DADOS">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Organização, sistemas e metódos /1ª lista_2020_1.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Organização,sistemas_e_metodos/1ª lista_2020_1.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Organização, sistemas e metódos /3ª Avaliação 2020_1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Organização,sistemas_e_metodos/3ª Avaliação 2020_1.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Organização, sistemas e metódos /4ª Avaliação 2020_1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Organização,sistemas_e_metodos/4ª Avaliação 2020_1.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Organização, sistemas e metódos /Evolução dos modelos organizacionais.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Organização,sistemas_e_metodos/Evolução dos modelos organizacionais.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Organização, sistemas e metódos /Princípios de Administração_Fayol.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Organização,sistemas_e_metodos/Princípios de Administração_Fayol.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Organização,sistemas_e_metodos/1ª lista_2020_1.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Organização,sistemas_e_metodos/3ª Avaliação 2020_1.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Organização,sistemas_e_metodos/4ª Avaliação 2020_1.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Organização,sistemas_e_metodos/Evolução dos modelos organizacionais.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Organização,sistemas_e_metodos/Princípios de Administração_Fayol.docx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -312,7 +311,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606099137286</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Atualização">
+      <created>1606099223533</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1606099223533</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
