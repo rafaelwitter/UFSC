@@ -1,6 +1,6 @@
  ## Projetos realizados durante a graduação de Sistemas de Informação na Universidade Federal de Santa Catarina.
 
-### [Currículo do curso](https://cagr.sistemas.ufsc.br/relatorios/curriculoCurso?curso=238&curriculo=20001)
+### [Currículo do curso](https://sin.paginas.ufsc.br/files/2020/02/Curr%C3%ADculo-2011-1-Altera%C3%A7%C3%B5es-curriculares-2019.pdf)
 
 ### Web Development: 
 >- [NodeJs, bibliotecas e Frameworks](https://github.com/rafaelwitter/UFSC/tree/master/PROG_WEB)
