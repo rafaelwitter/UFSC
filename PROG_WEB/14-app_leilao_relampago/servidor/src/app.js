@@ -19,11 +19,10 @@ const app = express()
 
 app.use(express.static(path.resolve(__dirname, '../publico')))
 app.use(express.json())
-
 const server = https.createServer(opcoes, app)
 
 criaServidorWS(server)
 
 
 // eslint-disable-next-line no-console
-server.listen(PORTA, () => console.log(`Servidor no ar na porta ${PORTA}...`))
+server.listen(PORTA, () => console.log(`Servidor no ar no endereço na porta ${PORTA}...`))

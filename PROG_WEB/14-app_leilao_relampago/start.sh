@@ -1,1 +1,1 @@
-cd cliente && nohup npm start && cd servidor npm start
+cd cliente && nohup npm start && cd servidor npm start &

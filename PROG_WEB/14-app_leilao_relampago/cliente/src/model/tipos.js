@@ -19,6 +19,7 @@ export type Leilao = {|
   vendedor: Login,
   aberto: boolean,
   produto: ProdutoVendido,
+  oferta: Oferta,
   participantes: Array<Login>
 |}
 

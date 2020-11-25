@@ -21,7 +21,7 @@ export default function OutroLeilao(props: Props) {
   
   function ofertaInvalida() {
     return valor < props.leilao.produto.precoMinimo || 
-        (props.leilao.produto.melhorOferta !== null && valor <= props.leilao.produto.melhorOferta.valor)
+        (props.leilao.produto.melhorOferta !== null && valor < props.leilao.produto.melhorOferta.valor)
   }
   
   function enviaOferta() {
@@ -50,7 +50,7 @@ export default function OutroLeilao(props: Props) {
     if (ofertaInvalida()){
       return props.leilao.produto.melhorOferta === null }
     else {
-      return props.leilao.produto.
+      return props.leilao.produto
     }
 
   }
