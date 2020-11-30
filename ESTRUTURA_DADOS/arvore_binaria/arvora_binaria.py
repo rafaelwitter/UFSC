@@ -1,4 +1,4 @@
-from ESTRUTURA_DADOS.arvore_binaria.fila import Queue
+from fila import *
 
 RAIZ = "raiz"
 
@@ -74,20 +74,36 @@ class ArvoreBinaria:
 
 class ArvoreBinariaBusca(ArvoreBinaria):
     def inserir(self, elem):
-        parent = None
+        ponteiro = None
         x = self.raiz
         while x:
-            parent = x
+            ponteiro = x
             if elem < x.dado:
                 x = x.esquerda
             else:
                 x = x.direita
-        if parent is None:
+        if ponteiro is None:
             self.raiz = Node(elem)
-        elif elem < parent.dado:
-            parent.esquerda = Node(elem)
+        elif elem < ponteiro.dado:
+            ponteiro.esquerda = Node(elem)
         else:
-            parent.direita = Node(elem)
+            ponteiro.direita = Node(elem)
+
+    def inserir2(self, elem):
+        ponteiro = None
+        self.raiz = x = nd(elem)
+        while x:
+            ponteiro = x
+            if elem < x.value:
+                x = x.left
+            else:
+                x = x.right
+        if ponteiro is None:
+            self.raiz = nd(elem)
+        elif elem < self.raiz.value:
+            nd(self.raiz.value, left=nd(elem))
+        else:
+            ponteiro = nd(self.raiz.value, right=nd(elem))
 
     def busca(self, valor):
         return self._busca(valor, self.raiz)
@@ -142,3 +158,95 @@ class ArvoreBinariaBusca(ArvoreBinaria):
                 # Depois, remove o substituto da subárvore à direita
                 node.direita = self.remove(substituto, node.direita)
         return node
+
+
+def monta_arvore(arvore, curr_index, index=False, delimiter='-'):
+    if arvore is None:
+        return [], 0, 0, 0
+
+    line1 = []
+    line2 = []
+    if index:
+        node_repr = '{}{}{}'.format(curr_index, delimiter, arvore)
+    else:
+        node_repr = str(arvore.dado)
+
+    # direita, esquerda = arvore.pos_ordem()
+    new_root_width = gap_size = len(node_repr)
+
+    # Get the left and right sub-boxes, their widths, and root repr positions
+    l_box, l_box_width, l_root_start, l_root_end = \
+        monta_arvore(arvore.esquerda, 2 * curr_index + 1, index, delimiter)
+    r_box, r_box_width, r_root_start, r_root_end = \
+        monta_arvore(arvore.direita, 2 * curr_index + 2, index, delimiter)
+
+    # Draw the branch connecting the current root node to the left sub-box
+    # Pad the line with whitespaces where necessary
+    if l_box_width > 0:
+        l_root = (l_root_start + l_root_end) // 2 + 1
+        line1.append(' ' * (l_root + 1))
+        line1.append('_' * (l_box_width - l_root))
+        line2.append(' ' * l_root + '/')
+        line2.append(' ' * (l_box_width - l_root))
+        new_root_start = l_box_width + 1
+        gap_size += 1
+    else:
+        new_root_start = 0
+
+    # Draw the representation of the current root node
+    line1.append(node_repr)
+    line2.append(' ' * new_root_width)
+
+    # Draw the branch connecting the current root node to the right sub-box
+    # Pad the line with whitespaces where necessary
+    if r_box_width > 0:
+        r_root = (r_root_start + r_root_end) // 2
+        line1.append('_' * r_root)
+        line1.append(' ' * (r_box_width - r_root + 1))
+        line2.append(' ' * r_root + '\\')
+        line2.append(' ' * (r_box_width - r_root))
+        gap_size += 1
+    new_root_end = new_root_start + new_root_width - 1
+
+    # Combine the left and right sub-boxes with the branches drawn above
+    gap = ' ' * gap_size
+    new_box = [''.join(line1), ''.join(line2)]
+    for i in range(max(len(l_box), len(r_box))):
+        l_line = l_box[i] if i < len(l_box) else ' ' * l_box_width
+        r_line = r_box[i] if i < len(r_box) else ' ' * r_box_width
+        new_box.append(l_line + gap + r_line)
+
+    # Return the new box, its width and its root repr positions
+    return new_box, len(new_box[0]), new_root_start, new_root_end
+
+
+def pprint(arvore, index=False, delimiter='-'):
+    lines = monta_arvore(arvore, 0, index, delimiter)[0]
+    print('\n' + '\n'.join((line.rstrip() for line in lines)))
+
+
+a = ArvoreBinariaBusca()
+a.inserir(5)
+a.inserir(20)
+a.inserir(1)
+a.inserir(2)
+a.inserir(1421)
+a.inserir(3)
+a.inserir(4)
+a.inserir(7)
+a.inserir(9)
+a.inserir(11)
+a.inserir(6)
+a.inserir(-1)
+print(a.altura())
+# a.pos_ordem()
+# print(f'\nA altura da arvore criada acima é de: {a.altura()}')
+# a.in_order()
+# print('\n--------------')
+# print('\n--------------')
+# a.remove(2)
+# print("apos a remoçao da raiz:")
+# a.in_order()
+# print(f'\n------------\nA nova raiz agora é {a.raiz}')
+# print(f'A altura da arvore é de: {a.altura()} \n-----------')
+pprint(a.raiz)
