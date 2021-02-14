@@ -8,6 +8,7 @@ class ControladorGeral:
         self.controlador_pessoas = ControladorPessoa(self)
         self.tela = TelaPrincipal(self)
         self.tela_pesquisa = TelaPesquisa(self)
+        print(self.controlador_pessoas.interseccao(cor="Branco", nacio="Brasil"))
         self.abre_tela()
 
     def abre_tela(self):
@@ -137,11 +138,13 @@ class ControladorGeral:
         t = {1: self.tela_pesquisa.mostra_pesquisa_idade_nome,
              2: self.tela_pesquisa.mostra_pesquisa_nacionalidade_nome,
              3: self.tela_pesquisa.mostra_pesquisa_nacionalidade_idade,
-             4: self.tela_pesquisa.mostra_pesquisa_all}
+             4: self.tela_pesquisa.mostra_pesquisa_all,
+             5: self.tela_pesquisa.mostra_pesquisa_cor_nacionalidade}
         o = {1: self.tela_pesquisa.open_pesquisa_idade_nome,
              2: self.tela_pesquisa.open_pesquisa_nacionalidade_nome,
              3: self.tela_pesquisa.open_pesquisa_nacionalidade_idade,
-             4: self.tela_pesquisa.open_pesquisa_all}
+             4: self.tela_pesquisa.open_pesquisa_all,
+             5: self.tela_pesquisa.open_pesquisa_cor_nacionalidade}
         while True:
             if nmr == 1:
                 t[nmr](idade, nome)
@@ -173,14 +176,26 @@ class ControladorGeral:
                     self.tela_pesquisa.close_pesquisa_all()
                     self.tela.window.un_hide()
                     break
+            elif nmr == 5:
+                pessoas = self.controlador_pessoas.interseccao(cor=raca, nacio=nacionalidade)
+                t[nmr](pessoas)
+                b, v = o[nmr]()
+                if b == "Ok":
+                    self.tela.window_pesquisa_multipla.hide()
+                elif b == "Voltar":
+                    self.tela_pesquisa.close_pesquisa_all()
+                    self.tela.window.un_hide()
+                    break
             else:
                 self.tela.window_pesquisa.un_hide()
 
     def pesquisa_mutipla_switch(self, nmr):
         t = {1: self.tela_pesquisa.pesquisa_idade_nome, 2: self.tela_pesquisa.pesquisa_nacionalidade_nome,
-             3: self.tela_pesquisa.pesquisa_nacionalidade_idade, 4: self.tela_pesquisa.pesquisa_all}
+             3: self.tela_pesquisa.pesquisa_nacionalidade_idade, 4: self.tela_pesquisa.pesquisa_all,
+             5: self.tela_pesquisa.pesquisa_cor_nacionalidade}
         o = {1: self.tela_pesquisa.open_pesquisa_idade_nome, 2: self.tela_pesquisa.open_pesquisa_nacionalidade_nome,
-             3: self.tela_pesquisa.open_pesquisa_nacionalidade_idade, 4: self.tela_pesquisa.open_pesquisa_all}
+             3: self.tela_pesquisa.open_pesquisa_nacionalidade_idade, 4: self.tela_pesquisa.open_pesquisa_all,
+             5: self.tela_pesquisa.open_pesquisa_cor_nacionalidade}
         while True:
             if nmr == 1:
                 t[nmr]()
@@ -219,6 +234,14 @@ class ControladorGeral:
                 else:
                     self.tela.window_pesquisa_multipla.un_hide()
                     self.tela_pesquisa.close_pesquisa_all()
+                    break
+            elif nmr == 5:
+                t[nmr]()
+                b, v = o[nmr]()
+                if b == "Ok":
+                    self.lista_pesquisa_multipla(5, nacionalidade=str(v['nacionalidade']), raca=str(v['cor']))
+                else:
+                    self.tela_pesquisa.close_pesquisa_cor_nacionalidade()
                     break
             else:
                 break
@@ -284,14 +307,23 @@ class ControladorGeral:
                 button, value = o[4]()
                 if button == "Ok":
                     if value['nome_idade']:
+                        self.tela.window_pesquisa_multipla.hide()
                         self.pesquisa_mutipla_switch(1)
                     elif value['all']:
+                        self.tela.window_pesquisa_multipla.hide()
                         self.pesquisa_mutipla_switch(4)
                     elif value['idade_nacionalidade']:
+                        self.tela.window_pesquisa_multipla.hide()
                         self.pesquisa_mutipla_switch(3)
                     elif value['nome_nacionalidade']:
+                        self.tela.window_pesquisa_multipla.hide()
                         self.pesquisa_mutipla_switch(2)
+                    elif value['raca_nacionalidade']:
+                        self.tela.window_pesquisa_multipla.hide()
+                        self.pesquisa_mutipla_switch(5)
                 else:
-                    self.tela.window_pesquisa_multipla.Close()
-                    self.tela.window.un_hide()
+                    self.tela.window_pesquisa_multipla.un_hide()
                     break
+
+    def get_pessoa(self, pessoa):
+        return self.controlador_pessoas.busca_especifica(pessoa)

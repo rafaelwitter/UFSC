@@ -1,6 +1,8 @@
 # Universidade Federal de Santa Catarina
 ## Trabalho final Estrutura de Dados INE-5609 2020/1
-#### Alunos Rafael N. Witt, matrícula nº 18200649
+#### Aluno Rafael N. Witt, matrícula nº 18200649
+
+- Multi Listas implementado somente na busca de raça/cor com nacionalidade com intuito de demonstrar que o conhecimento foi absorvido.
 
 - Descrição do programa.
 

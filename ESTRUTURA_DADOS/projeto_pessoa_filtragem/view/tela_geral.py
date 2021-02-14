@@ -72,7 +72,8 @@ class TelaPrincipal:
         layout = [[sg.Radio('Procurar uma pessoa com todos os atributos', group_id=1, key='all'),
                    sg.Radio('Procurar por idade e nacionalidade', group_id=1, key='idade_nacionalidade'),
                    sg.Radio('Procurar por nome e idade', group_id=1, key='nome_idade'),
-                   sg.Radio("Procurar por nome e nacionalidade", group_id=1, key='nome_nacionalidade')],
+                   sg.Radio("Procurar por nome e nacionalidade", group_id=1, key='nome_nacionalidade'),
+                   sg.Radio("Procurar por raça e nacionalidade", group_id=1, key='raca_nacionalidade')],
                   [sg.Button("Ok"), sg.Button("Voltar")]]
         self.window_pesquisa_multipla = sg.Window("Filtro de pessoas").layout(layout)
 
@@ -118,6 +119,7 @@ class TelaPesquisa:
         self.window_pesquisa_all = None
         self.window_mostra_pesquisa_all = None
         self.window_pesquisa_nacionalidade_nome = None
+        self.window_pesquisa_cor_nacionalidade = None
 
     def pesquisa_nome(self):
         sg.ChangeLookAndFeel('Reddit')
@@ -371,10 +373,43 @@ class TelaPesquisa:
                 layout = [sg.Popup("Nao existem pessoas cadastradas")]
                 self.window_mostra_pesquisa_all = sg.Window.layout(layout)
 
-
     def open_mostra_pesquisa_all(self):
         b, v = self.window_mostra_pesquisa_all.Read()
         return b, v
 
     def close_mostra_pesquisa_all(self):
         self.window_mostra_pesquisa_all.Close()
+
+    def pesquisa_cor_nacionalidade(self):
+        sg.ChangeLookAndFeel('Reddit')
+        nacionalidades = ["Brasil", "Espanha", "Alemanha", "Estado Unidos", "França", "Portugal", "Canada"]
+        cor = ["Branco", "Negro", "Pardo"]
+        layout = [[sg.Text("Escolha a nacionalidade: "), sg.Combo(nacionalidades, key='nacionalidade')],
+                  [sg.Text("Escolha a cor: "), sg.Combo(cor, key='cor')],
+                  [sg.Button("Ok"), sg.Button("Voltar")]]
+        self.window_pesquisa_cor_nacionalidade = sg.Window("Pesquisa composta").Layout(layout)
+
+    def open_pesquisa_cor_nacionalidade(self):
+        b, v = self.window_pesquisa_cor_nacionalidade.Read()
+        return b, v
+
+    def close_pesquisa_cor_nacionalidade(self):
+        self.window_pesquisa_cor_nacionalidade.close()
+
+    def mostra_pesquisa_cor_nacionalidade(self, selecao):
+        """Implementação de multilistas"""
+        sg.ChangeLookAndFeel('Reddit')
+        layout2 = []
+        for pessoa in selecao:
+            p = self.__controlador.get_pessoa(pessoa)
+            layout2 += [[sg.Text("Nome: " + p.nome), sg.Text("Nacionalidade: " + p.nacionalidade),
+                         sg.Text("Idade: " + str(p.idade)), sg.Text("Raça/Cor: " + p.raca)]]
+        layout2 += [[sg.Exit("Sair"), sg.Button("Voltar")]]
+        self.window_pesquisa_cor_nacionalidade = sg.Window("Pesquisa Compostta").Layout(layout2)
+
+    def open_mostra_pesquisa_cor_nacionalidade(self):
+        b, v = self.window_pesquisa_cor_nacionalidade.Read()
+        return b, v
+
+    def close_mostra_pesquisa_cor_nacionalidade(self):
+        self.window_pesquisa_cor_nacionalidade.close()
