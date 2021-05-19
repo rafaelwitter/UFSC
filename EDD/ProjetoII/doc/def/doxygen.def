@@ -1,0 +1,330 @@
+AutoGen Definitions dummy;
+struct = {
+  cp-id     = 'structstructures_1_1_trie_node';
+  cp-name   = 'structures::TrieNode';
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'structstructures_1_1_trie_node_1ab34ab18a2b5a71b8e2081566d3ed56d6';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+struct TrieNode *
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'children';
+      sec-mem-desc-file = '/home/ducker/Desktop/UFSC/EDD/ProjetoII/src/trie.h';
+      sec-mem-desc-line = '32';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'structstructures_1_1_trie_node_1a56bdf19e4eadeafdb4480b55c5758ced';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'pos';
+      sec-mem-desc-file = '/home/ducker/Desktop/UFSC/EDD/ProjetoII/src/trie.h';
+      sec-mem-desc-line = '33';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'structstructures_1_1_trie_node_1a4cc910f321fc31a5d51b65ad0fe338c9';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'len';
+      sec-mem-desc-file = '/home/ducker/Desktop/UFSC/EDD/ProjetoII/src/trie.h';
+      sec-mem-desc-line = '33';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/home/ducker/Desktop/UFSC/EDD/ProjetoII/src/trie.h';
+  cp-fileline  = '31';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+Árvore de prefixos.
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+A árvore de prefixos é uma estrutura de dados eficiente no que diz respeito à
+recuperação de informações. Por isso ela também é conhecida como Trie, de reTRIEval.
+Usando uma Trie bem organizada, pode-se alcançar complexidade de busca O(M), onde M
+representa o tamanho máximo de suas chaves. Ao passo que, uma BST balanceada teria tempo
+proporcional a MlogN, em que N representa o número de chaves na árvore. Essas vantagens
+todavia não são sem seus custos, uma vez que a Trie perde para a BST em espaço ocupado em 
+memória.
+_EnD_oF_dEf_TeXt_;
+  cp-collaborationgraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 1;
+        node-label = 'structures::TrieNode';
+        node-link = {
+          node-link-id = 'structstructures_1_1_trie_node';
+        };
+        node-child = {
+          child-id = '1';
+          relation = usage;
+          edgelabel = <<_EnD_oF_dEf_TeXt_
+children
+_EnD_oF_dEf_TeXt_;
+        }; /* node-child */
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+}; /* struct */
+file = {
+  file-id   = 'main_8cpp';
+  file-name = 'main.cpp';
+    func = {
+    func-member = {
+      func-mem-kind = 'function';
+      func-mem-id   = 'main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4';
+      func-mem-virt = normal;
+      func-mem-prot = public;
+      func-mem-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+      func-mem-name = 'main';
+      func-mem-desc-file = '/home/ducker/Desktop/UFSC/EDD/ProjetoII/src/main.cpp';
+      func-mem-desc-line = '26';
+      func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Programa principal, realiza a leitura e processamento dos dicionários
+e indica o que as palavras da entrada são, se a palavra pertence ao
+dicionário é impresso a sua posição e o comprimeto da linha em que a palavra
+está.
+_EnD_oF_dEf_TeXt_;
+      func-mem-documentation = <<_EnD_oF_dEf_TeXt_
+ 
+_EnD_oF_dEf_TeXt_;
+    }; /* func-member */
+    };
+  file-full-name  = '/home/ducker/Desktop/UFSC/EDD/ProjetoII/src/main.cpp';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+Código do programa principal.
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+@author Rafael Nilson Witt
+@version 1.0
+@date 2021-05-05
+
+@copyright Copyright (c) 2021
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'trie_8h';
+  file-name = 'trie.h';
+    define = {
+    define-member = {
+      define-mem-kind = 'define';
+      define-mem-id   = 'trie_8h_1a6572f1706059832f94025fa12c6c45ed';
+      define-mem-virt = normal;
+      define-mem-prot = public;
+      define-mem-name = 'ALPHABET_SIZE';
+      define-mem-initializer = <<_EnD_oF_dEf_TeXt_
+26
+_EnD_oF_dEf_TeXt_;
+      define-mem-desc-file = '/home/ducker/Desktop/UFSC/EDD/ProjetoII/src/trie.h';
+      define-mem-desc-line = '16';
+      define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      define-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* define-member */
+    };
+    func = {
+    func-member = {
+      func-mem-kind = 'function';
+      func-mem-id   = 'namespacestructures_1aba4ddeb288cf1a8d522888561145aed8';
+      func-mem-virt = normal;
+      func-mem-prot = public;
+      func-mem-type = <<_EnD_oF_dEf_TeXt_
+struct TrieNode *
+_EnD_oF_dEf_TeXt_;
+      func-mem-name = 'initNode';
+      func-mem-desc-file = '/home/ducker/Desktop/UFSC/EDD/ProjetoII/src/trie.h';
+      func-mem-desc-line = '45';
+      func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Aloca memória para um novo TrieNode.
+_EnD_oF_dEf_TeXt_;
+      func-mem-documentation = <<_EnD_oF_dEf_TeXt_
+A posição e o comprimento de cada TrieNode começam zerados. Além disso, todos
+as posições do vetor de nodos filhos começam nulas.
+
+@return struct TrieNode* Ponteiro para o novo TrieNode criado.
+_EnD_oF_dEf_TeXt_;
+    }; /* func-member */
+    func-member = {
+      func-mem-kind = 'function';
+      func-mem-id   = 'namespacestructures_1a4fb9d800dc8b1cd76e984a2f8e80aeae';
+      func-mem-virt = normal;
+      func-mem-prot = public;
+      func-mem-type = <<_EnD_oF_dEf_TeXt_
+void
+_EnD_oF_dEf_TeXt_;
+      func-mem-name = 'insert';
+      func-mem-param = {
+        func-mem-param-type = <<_EnD_oF_dEf_TeXt_
+struct TrieNode *
+_EnD_oF_dEf_TeXt_;
+        func-mem-param-declname = 'root';
+      }; /*        func-mem-param--param */
+      func-mem-param = {
+        func-mem-param-type = <<_EnD_oF_dEf_TeXt_
+std::string
+_EnD_oF_dEf_TeXt_;
+        func-mem-param-declname = 'word';
+      }; /*        func-mem-param--param */
+      func-mem-param = {
+        func-mem-param-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+        func-mem-param-declname = 'pos';
+      }; /*        func-mem-param--param */
+      func-mem-param = {
+        func-mem-param-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+        func-mem-param-declname = 'len';
+      }; /*        func-mem-param--param */
+      func-mem-desc-file = '/home/ducker/Desktop/UFSC/EDD/ProjetoII/src/trie.h';
+      func-mem-desc-line = '55';
+      func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Adiciona uma chave na árvore de prefixos.
+_EnD_oF_dEf_TeXt_;
+      func-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@param root Root da árvore.
+@param word Palavra para inserir.
+@param pos Posicao no dicionario da palavra a ser inserida.
+@param len Comprimento da linha no dicionario que possui a palavra a ser inserida.
+_EnD_oF_dEf_TeXt_;
+    }; /* func-member */
+    func-member = {
+      func-mem-kind = 'function';
+      func-mem-id   = 'namespacestructures_1ac4c5bd12c0951d54908fab3050f61925';
+      func-mem-virt = normal;
+      func-mem-prot = public;
+      func-mem-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+      func-mem-name = 'findPrefix';
+      func-mem-param = {
+        func-mem-param-type = <<_EnD_oF_dEf_TeXt_
+struct TrieNode *
+_EnD_oF_dEf_TeXt_;
+        func-mem-param-declname = 'index';
+      }; /*        func-mem-param--param */
+      func-mem-desc-file = '/home/ducker/Desktop/UFSC/EDD/ProjetoII/src/trie.h';
+      func-mem-desc-line = '57';
+      func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      func-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* func-member */
+    func-member = {
+      func-mem-kind = 'function';
+      func-mem-id   = 'namespacestructures_1a47200eabc3924193e8159ab1e2bf7461';
+      func-mem-virt = normal;
+      func-mem-prot = public;
+      func-mem-type = <<_EnD_oF_dEf_TeXt_
+std::tuple< int, int, int >
+_EnD_oF_dEf_TeXt_;
+      func-mem-name = 'search';
+      func-mem-param = {
+        func-mem-param-type = <<_EnD_oF_dEf_TeXt_
+struct TrieNode *
+_EnD_oF_dEf_TeXt_;
+      }; /*        func-mem-param--param */
+      func-mem-param = {
+        func-mem-param-type = <<_EnD_oF_dEf_TeXt_
+std::string
+_EnD_oF_dEf_TeXt_;
+        func-mem-param-declname = 'word';
+      }; /*        func-mem-param--param */
+      func-mem-desc-file = '/home/ducker/Desktop/UFSC/EDD/ProjetoII/src/trie.h';
+      func-mem-desc-line = '68';
+      func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+Procura por uma palavra na árvore de prefixos.
+_EnD_oF_dEf_TeXt_;
+      func-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@param word Palavra a ser procurada na trie.
+@param root Raíz da árvore.
+
+@return pair<int,int> Par que indica se a palavra pertence ao dicionário, é apenas 
+um prefixo ou que não pertence ao dicionário. Se a palavra pertencer ao dicionário, a
+primeira entrada representa a posição da palavra enquanto a segunda, o comprimeto da linha. 
+_EnD_oF_dEf_TeXt_;
+    }; /* func-member */
+    func-member = {
+      func-mem-kind = 'function';
+      func-mem-id   = 'namespacestructures_1ac6bef8a6a68faa69bbeb4e46d8bc2747';
+      func-mem-virt = normal;
+      func-mem-prot = public;
+      func-mem-type = <<_EnD_oF_dEf_TeXt_
+int
+_EnD_oF_dEf_TeXt_;
+      func-mem-name = 'countWords';
+      func-mem-param = {
+        func-mem-param-type = <<_EnD_oF_dEf_TeXt_
+std::istream &
+_EnD_oF_dEf_TeXt_;
+        func-mem-param-declname = 'in';
+      }; /*        func-mem-param--param */
+      func-mem-desc-file = '/home/ducker/Desktop/UFSC/EDD/ProjetoII/src/trie.h';
+      func-mem-desc-line = '70';
+      func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      func-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* func-member */
+    };
+  file-full-name  = '/home/ducker/Desktop/UFSC/EDD/ProjetoII/src/trie.h';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+Código da trie.
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+@author Rafael Nilson Witt
+@version 1.0
+@date 2021-05-05
+
+@copyright Copyright (c) 2021
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'trie_8inc';
+  file-name = 'trie.inc';
+  file-full-name  = '/home/ducker/Desktop/UFSC/EDD/ProjetoII/src/trie.inc';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */

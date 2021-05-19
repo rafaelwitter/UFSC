@@ -1,0 +1,91 @@
+\hypertarget{namespacestructures}{}\doxysection{structures Namespace Reference}
+\label{namespacestructures}\index{structures@{structures}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structstructures_1_1_trie_node}{Trie\+Node}}
+\begin{DoxyCompactList}\small\item\em Árvore de prefixos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structstructures_1_1_trie_node}{Trie\+Node}} $\ast$ \mbox{\hyperlink{namespacestructures_aba4ddeb288cf1a8d522888561145aed8}{init\+Node}} ()
+\begin{DoxyCompactList}\small\item\em Aloca memória para um novo \mbox{\hyperlink{structstructures_1_1_trie_node}{Trie\+Node}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacestructures_a4fb9d800dc8b1cd76e984a2f8e80aeae}{insert}} (struct \mbox{\hyperlink{structstructures_1_1_trie_node}{Trie\+Node}} $\ast$root, std\+::string word, int pos, int len)
+\begin{DoxyCompactList}\small\item\em Adiciona uma chave na árvore de prefixos. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacestructures_ac4c5bd12c0951d54908fab3050f61925}{find\+Prefix}} (struct \mbox{\hyperlink{structstructures_1_1_trie_node}{Trie\+Node}} $\ast$index)
+\item 
+std\+::tuple$<$ int, int, int $>$ \mbox{\hyperlink{namespacestructures_a47200eabc3924193e8159ab1e2bf7461}{search}} (struct \mbox{\hyperlink{structstructures_1_1_trie_node}{Trie\+Node}} $\ast$, std\+::string word)
+\begin{DoxyCompactList}\small\item\em Procura por uma palavra na árvore de prefixos. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacestructures_ac6bef8a6a68faa69bbeb4e46d8bc2747}{count\+Words}} (std\+::istream \&in)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacestructures_ac6bef8a6a68faa69bbeb4e46d8bc2747}\label{namespacestructures_ac6bef8a6a68faa69bbeb4e46d8bc2747}} 
+\index{structures@{structures}!countWords@{countWords}}
+\index{countWords@{countWords}!structures@{structures}}
+\doxysubsubsection{\texorpdfstring{countWords()}{countWords()}}
+{\footnotesize\ttfamily int structures\+::count\+Words (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{in }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacestructures_ac4c5bd12c0951d54908fab3050f61925}\label{namespacestructures_ac4c5bd12c0951d54908fab3050f61925}} 
+\index{structures@{structures}!findPrefix@{findPrefix}}
+\index{findPrefix@{findPrefix}!structures@{structures}}
+\doxysubsubsection{\texorpdfstring{findPrefix()}{findPrefix()}}
+{\footnotesize\ttfamily int structures\+::find\+Prefix (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structstructures_1_1_trie_node}{Trie\+Node}} $\ast$}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacestructures_aba4ddeb288cf1a8d522888561145aed8}\label{namespacestructures_aba4ddeb288cf1a8d522888561145aed8}} 
+\index{structures@{structures}!initNode@{initNode}}
+\index{initNode@{initNode}!structures@{structures}}
+\doxysubsubsection{\texorpdfstring{initNode()}{initNode()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structstructures_1_1_trie_node}{Trie\+Node}}$\ast$ structures\+::init\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Aloca memória para um novo \mbox{\hyperlink{structstructures_1_1_trie_node}{Trie\+Node}}. 
+
+A posição e o comprimento de cada \mbox{\hyperlink{structstructures_1_1_trie_node}{Trie\+Node}} começam zerados. Além disso, todos as posições do vetor de nodos filhos começam nulas.
+
+\begin{DoxyReturn}{Returns}
+struct Trie\+Node$\ast$ Ponteiro para o novo \mbox{\hyperlink{structstructures_1_1_trie_node}{Trie\+Node}} criado. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacestructures_a4fb9d800dc8b1cd76e984a2f8e80aeae}\label{namespacestructures_a4fb9d800dc8b1cd76e984a2f8e80aeae}} 
+\index{structures@{structures}!insert@{insert}}
+\index{insert@{insert}!structures@{structures}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily void structures\+::insert (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structstructures_1_1_trie_node}{Trie\+Node}} $\ast$}]{root,  }\item[{std\+::string}]{word,  }\item[{int}]{pos,  }\item[{int}]{len }\end{DoxyParamCaption})}
+
+
+
+Adiciona uma chave na árvore de prefixos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & Root da árvore. \\
+\hline
+{\em word} & Palavra para inserir. \\
+\hline
+{\em pos} & Posicao no dicionario da palavra a ser inserida. \\
+\hline
+{\em len} & Comprimento da linha no dicionario que possui a palavra a ser inserida. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespacestructures_a47200eabc3924193e8159ab1e2bf7461}\label{namespacestructures_a47200eabc3924193e8159ab1e2bf7461}} 
+\index{structures@{structures}!search@{search}}
+\index{search@{search}!structures@{structures}}
+\doxysubsubsection{\texorpdfstring{search()}{search()}}
+{\footnotesize\ttfamily std\+::tuple$<$int, int, int$>$ structures\+::search (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structstructures_1_1_trie_node}{Trie\+Node}} $\ast$}]{,  }\item[{std\+::string}]{word }\end{DoxyParamCaption})}
+
+
+
+Procura por uma palavra na árvore de prefixos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word} & Palavra a ser procurada na trie. \\
+\hline
+{\em root} & Raíz da árvore.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pair$<$int,int$>$ Par que indica se a palavra pertence ao dicionário, é apenas um prefixo ou que não pertence ao dicionário. Se a palavra pertencer ao dicionário, a primeira entrada representa a posição da palavra enquanto a segunda, o comprimeto da linha. 
+\end{DoxyReturn}

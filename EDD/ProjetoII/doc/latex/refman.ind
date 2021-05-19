@@ -1,0 +1,65 @@
+\begin{theindex}
+
+  \item {ALPHABET\_SIZE}
+    \subitem {trie.h}, \hyperpage{16}
+
+  \indexspace
+
+  \item {children}
+    \subitem {structures::TrieNode}, \hyperpage{12}
+  \item {countWords}
+    \subitem {structures}, \hyperpage{7}
+
+  \indexspace
+
+  \item {findPrefix}
+    \subitem {structures}, \hyperpage{7}
+
+  \indexspace
+
+  \item {initNode}
+    \subitem {structures}, \hyperpage{8}
+  \item {insert}
+    \subitem {structures}, \hyperpage{8}
+
+  \indexspace
+
+  \item {len}
+    \subitem {structures::TrieNode}, \hyperpage{12}
+
+  \indexspace
+
+  \item {main}
+    \subitem {main.cpp}, \hyperpage{14}
+  \item {main.cpp}
+    \subitem {main}, \hyperpage{14}
+
+  \indexspace
+
+  \item {pos}
+    \subitem {structures::TrieNode}, \hyperpage{12}
+
+  \indexspace
+
+  \item {search}
+    \subitem {structures}, \hyperpage{8}
+  \item {src/main.cpp}, \hyperpage{13}
+  \item {src/trie.h}, \hyperpage{14}
+  \item {src/trie.inc}, \hyperpage{16}
+  \item {structures}, \hyperpage{7}
+    \subitem {countWords}, \hyperpage{7}
+    \subitem {findPrefix}, \hyperpage{7}
+    \subitem {initNode}, \hyperpage{8}
+    \subitem {insert}, \hyperpage{8}
+    \subitem {search}, \hyperpage{8}
+  \item {structures::TrieNode}, \hyperpage{11}
+    \subitem {children}, \hyperpage{12}
+    \subitem {len}, \hyperpage{12}
+    \subitem {pos}, \hyperpage{12}
+
+  \indexspace
+
+  \item {trie.h}
+    \subitem {ALPHABET\_SIZE}, \hyperpage{16}
+
+\end{theindex}

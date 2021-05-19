@@ -1,0 +1,100 @@
+.TH "src/trie.h" 3 "Wed May 19 2021" "Version 1.0" "Projeto II" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/trie.h \- Código da trie\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <string>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <tuple>\fP
+.br
+\fC#include 'trie\&.inc'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBstructures::TrieNode\fP"
+.br
+.RI "Árvore de prefixos\&. "
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBstructures\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBALPHABET_SIZE\fP   26"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "struct TrieNode * \fBstructures::initNode\fP ()"
+.br
+.RI "Aloca memória para um novo \fBTrieNode\fP\&. "
+.ti -1c
+.RI "void \fBstructures::insert\fP (struct TrieNode *root, std::string word, int pos, int len)"
+.br
+.RI "Adiciona uma chave na árvore de prefixos\&. "
+.ti -1c
+.RI "int \fBstructures::findPrefix\fP (struct TrieNode *index)"
+.br
+.ti -1c
+.RI "std::tuple< int, int, int > \fBstructures::search\fP (struct TrieNode *, std::string word)"
+.br
+.RI "Procura por uma palavra na árvore de prefixos\&. "
+.ti -1c
+.RI "int \fBstructures::countWords\fP (std::istream &in)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Código da trie\&. 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+Rafael Nilson Witt 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2021-05-05
+.RE
+.PP
+\fBCopyright\fP
+.RS 4
+Copyright (c) 2021 
+.RE
+.PP
+
+.PP
+Definition in file \fBtrie\&.h\fP\&.
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ALPHABET_SIZE   26"
+
+.PP
+Definition at line 16 of file trie\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Projeto II from the source code\&.

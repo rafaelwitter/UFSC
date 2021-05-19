@@ -1,0 +1,79 @@
+\hypertarget{trie_8h}{}\doxysection{src/trie.h File Reference}
+\label{trie_8h}\index{src/trie.h@{src/trie.h}}
+
+
+Código da trie.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$tuple$>$}\newline
+{\ttfamily \#include \char`\"{}trie.\+inc\char`\"{}}\newline
+Include dependency graph for trie.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{trie_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=153pt]{trie_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structstructures_1_1_trie_node}{structures\+::\+Trie\+Node}}
+\begin{DoxyCompactList}\small\item\em Árvore de prefixos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacestructures}{structures}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{trie_8h_a6572f1706059832f94025fa12c6c45ed}{A\+L\+P\+H\+A\+B\+E\+T\+\_\+\+S\+I\+ZE}}~26
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct Trie\+Node $\ast$ \mbox{\hyperlink{namespacestructures_aba4ddeb288cf1a8d522888561145aed8}{structures\+::init\+Node}} ()
+\begin{DoxyCompactList}\small\item\em Aloca memória para um novo \mbox{\hyperlink{structstructures_1_1_trie_node}{Trie\+Node}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacestructures_a4fb9d800dc8b1cd76e984a2f8e80aeae}{structures\+::insert}} (struct Trie\+Node $\ast$root, std\+::string word, int pos, int len)
+\begin{DoxyCompactList}\small\item\em Adiciona uma chave na árvore de prefixos. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacestructures_ac4c5bd12c0951d54908fab3050f61925}{structures\+::find\+Prefix}} (struct Trie\+Node $\ast$index)
+\item 
+std\+::tuple$<$ int, int, int $>$ \mbox{\hyperlink{namespacestructures_a47200eabc3924193e8159ab1e2bf7461}{structures\+::search}} (struct Trie\+Node $\ast$, std\+::string word)
+\begin{DoxyCompactList}\small\item\em Procura por uma palavra na árvore de prefixos. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacestructures_ac6bef8a6a68faa69bbeb4e46d8bc2747}{structures\+::count\+Words}} (std\+::istream \&in)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Código da trie. 
+
+\begin{DoxyAuthor}{Author}
+Rafael Nilson Witt 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/05-\/05
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2021 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{trie_8h_a6572f1706059832f94025fa12c6c45ed}\label{trie_8h_a6572f1706059832f94025fa12c6c45ed}} 
+\index{trie.h@{trie.h}!ALPHABET\_SIZE@{ALPHABET\_SIZE}}
+\index{ALPHABET\_SIZE@{ALPHABET\_SIZE}!trie.h@{trie.h}}
+\doxysubsubsection{\texorpdfstring{ALPHABET\_SIZE}{ALPHABET\_SIZE}}
+{\footnotesize\ttfamily \#define A\+L\+P\+H\+A\+B\+E\+T\+\_\+\+S\+I\+ZE~26}
+

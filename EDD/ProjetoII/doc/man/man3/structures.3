@@ -1,0 +1,95 @@
+.TH "structures" 3 "Wed May 19 2021" "Version 1.0" "Projeto II" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+structures
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBTrieNode\fP"
+.br
+.RI "Árvore de prefixos\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "struct \fBTrieNode\fP * \fBinitNode\fP ()"
+.br
+.RI "Aloca memória para um novo \fBTrieNode\fP\&. "
+.ti -1c
+.RI "void \fBinsert\fP (struct \fBTrieNode\fP *root, std::string word, int pos, int len)"
+.br
+.RI "Adiciona uma chave na árvore de prefixos\&. "
+.ti -1c
+.RI "int \fBfindPrefix\fP (struct \fBTrieNode\fP *index)"
+.br
+.ti -1c
+.RI "std::tuple< int, int, int > \fBsearch\fP (struct \fBTrieNode\fP *, std::string word)"
+.br
+.RI "Procura por uma palavra na árvore de prefixos\&. "
+.ti -1c
+.RI "int \fBcountWords\fP (std::istream &in)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "int structures::countWords (std::istream & in)"
+
+.PP
+Definition at line 70 of file trie\&.h\&.
+.SS "int structures::findPrefix (struct \fBTrieNode\fP * index)"
+
+.SS "struct \fBTrieNode\fP* structures::initNode ()"
+
+.PP
+Aloca memória para um novo \fBTrieNode\fP\&. A posição e o comprimento de cada \fBTrieNode\fP começam zerados\&. Além disso, todos as posições do vetor de nodos filhos começam nulas\&.
+.PP
+\fBReturns\fP
+.RS 4
+struct TrieNode* Ponteiro para o novo \fBTrieNode\fP criado\&. 
+.RE
+.PP
+
+.SS "void structures::insert (struct \fBTrieNode\fP * root, std::string word, int pos, int len)"
+
+.PP
+Adiciona uma chave na árvore de prefixos\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIroot\fP Root da árvore\&. 
+.br
+\fIword\fP Palavra para inserir\&. 
+.br
+\fIpos\fP Posicao no dicionario da palavra a ser inserida\&. 
+.br
+\fIlen\fP Comprimento da linha no dicionario que possui a palavra a ser inserida\&. 
+.RE
+.PP
+
+.SS "std::tuple<int, int, int> structures::search (struct \fBTrieNode\fP *, std::string word)"
+
+.PP
+Procura por uma palavra na árvore de prefixos\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIword\fP Palavra a ser procurada na trie\&. 
+.br
+\fIroot\fP Raíz da árvore\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+pair<int,int> Par que indica se a palavra pertence ao dicionário, é apenas um prefixo ou que não pertence ao dicionário\&. Se a palavra pertencer ao dicionário, a primeira entrada representa a posição da palavra enquanto a segunda, o comprimeto da linha\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Projeto II from the source code\&.

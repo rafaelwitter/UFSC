@@ -1,0 +1,49 @@
+.TH "structures::TrieNode" 3 "Wed May 19 2021" "Version 1.0" "Projeto II" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+structures::TrieNode \- Árvore de prefixos\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <trie\&.h>\fP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBTrieNode\fP * \fBchildren\fP [\fBALPHABET_SIZE\fP]"
+.br
+.ti -1c
+.RI "int \fBpos\fP"
+.br
+.ti -1c
+.RI "int \fBlen\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Árvore de prefixos\&. 
+
+A árvore de prefixos é uma estrutura de dados eficiente no que diz respeito à recuperação de informações\&. Por isso ela também é conhecida como Trie, de reTRIEval\&. Usando uma Trie bem organizada, pode-se alcançar complexidade de busca O(M), onde M representa o tamanho máximo de suas chaves\&. Ao passo que, uma BST balanceada teria tempo proporcional a MlogN, em que N representa o número de chaves na árvore\&. Essas vantagens todavia não são sem seus custos, uma vez que a Trie perde para a BST em espaço ocupado em memória\&. 
+.PP
+Definition at line 31 of file trie\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "struct \fBTrieNode\fP* structures::TrieNode::children[\fBALPHABET_SIZE\fP]"
+
+.PP
+Definition at line 32 of file trie\&.h\&.
+.SS "int structures::TrieNode::len"
+
+.PP
+Definition at line 33 of file trie\&.h\&.
+.SS "int structures::TrieNode::pos"
+
+.PP
+Definition at line 33 of file trie\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Projeto II from the source code\&.

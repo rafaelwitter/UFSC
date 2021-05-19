@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['findprefix_3',['findPrefix',['../namespacestructures.html#ac4c5bd12c0951d54908fab3050f61925',1,'structures']]]
+];
