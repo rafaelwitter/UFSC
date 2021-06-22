@@ -1,0 +1,428 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+
+<html>
+
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <title>JUDE API User Guide</title>
+</head>
+
+<body bgcolor="#F0F8FF">
+
+<h1>JUDE API User Guide</h1>
+<P align="right">January 31, 2007<br>
+Change Vision, Inc.</p>
+<hr>
+<br>
+<h2>[What's JUDE API]</h2>
+JUDE API is a Java Interface Group for developing applications software using JUDE model data.<br>
+This document will explain how to develop applications using the JUDE API.<br>
+<br>
+<h2>[Permission to Use]</h2>
+<ul>
+<li>Do not redistribute jude-api.jar that is .jar format file of JUDE API.
+<li>You must accept [JUDE END-USER LICENSE AGREEMENT] to use JUDE API.
+</ul>
+<h2>[JUDE API System Requirements]</h2>
+The system environments that enable JUDE to run are required to run applications 
+software using JUDE API.<br>
+<ul>
+<li>Ensure that an appropriate version of Java is installed to run JUDE.
+<li>JUDE software needs to be installed.
+<ul>
+<li>jude-api.jar is required for application compilation.
+<li>Both of jude-api.jar and jude-pro.jar (jude-community.jar) are required for execution of applications.
+<li>Optional JAVA VM memory management setup is needed when the size of your JUDE project file is large.
+<br><b>(Example of set up for VM Startup Option as initial heap size 16MB, maximum heap size 256MB 
+and stack size 2MB)<br>
+-Xms16m -Xmx256m -Xss2m</b>
+</ul>
+</ul>
+<br>
+<h2>[Features]</h2>
+JUDE API enables you to obtain JUDE model elements and use them on applications software.<br>
+The reference of model elements used in Class Diagrams and UseCase Diagrams are currently supported. 
+We are planning to support the reference of the model elements and view elements used in other 
+Diagrams and also the editing feature for all the model elements and view elements in the future. <br>
+
+<h3>[How to get Model Information]</h3>
+We will show you how to get model information simply with examples using Class Diagrams, Object
+Diagrams and sample programs in this paragraph.<br>
+<b>Please refer to <a href="javadoc/index.html">JUDE API JavaDoc</a> for details for each interface 
+and methods.</b>
+
+<h4>How to get Attribute information of class</h4>
+You can get the array of Attributes by calling Class(IClass) Method getAttributes().<br>
+In case the class is associated with other classes, the information of the association end will 
+be also included in Attribute information objects.<br>
+For example, if Class0 has attribute0 and is associated with Class1 (association end role name class1),
+the attribute information of Class0 will be shown like
+<a href="png\IAttribute_IAssociation.png">this figure</a>.<br>
+<br>
+<h4>How to get Operation information of class</h4>
+You can get the array of Operations by calling Class(IClass) Method 
+getOperations()<br>
+<br>
+<h4>How to get Dependency information of class</h4>
+You can get the array of all Dependencies of the selected class by calling 
+Class(IClass) Method getClientDependencies(). By calling getSupplier(), 
+you can get the supplier class of the selected class. <br>
+For example, in case that Class0 depends on Class1, the information will be 
+shown like <a href="png\IDependency.png">this figure</a>.<br>
+<br>
+<h4>How to get Realization information of class</h4>
+You can get the array of Realizations between the selected class and
+the realized interfaces by calling Class(IClass) Method getClientRealizations(). 
+By calling getSupplier(), you can get the realized interfaces.<br>
+For example, in case that Class1 realizes Class0, the information will be shown 
+like <a href="png\IRealization.png">this figure</a>.<br>
+<br>
+<h4>How to get Generalization information of class</h4>
+You can get the array of Generalizations between the selected class
+and its superclass by calling Class(IClass) Method getGeneralizations(). 
+By calling getSuperType(), you can get its superclass information.<br>
+For example, in case that Class1 inherits Class0, the information 
+will be like <a href="png\IGeneralization.png">this figure</a>.<br>
+<br>
+<h4>How to get a Model of project accessor</h4>
+All model information in JUDE Project file is stored under the model of project accessor (Project
+model) in a tree structure.<br>
+First, get the ProjectAccessor object and open JUDE project file, then get
+Project Model (IModel Class object).<br>
+<br>
+ClassDefinitionBuilder.java<br>
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+        // Open project file and get project model
+        ProjectAccessor prjAccessor = ProjectAccessorFactory.getProjectAccessor();
+        prjAccessor.open(inputFile);
+        IModel iModel = prjAccessor.getProject();
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+<br>
+<br>
+<h4>How to get packages under Package recursively</h4>
+It is defined that Package we call here would include Subsystems and Models that
+inherit IPackage.<br>
+You can get all model elements directly under the package (IPackage) in an array by 
+calling getOwnedElements() and get only packages abstracted from it.
+By doing so, you can get all packages recursively.<br>
+<br>
+ClassDefinitionBuilder.java<br>
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+    /**
+     * Get packages under Package recursively.
+     * 
+     * @param iPackage
+     *            Selected Package
+     * @param iPackages
+     *            The list of all stored packages
+     * @return The list of all stored packages
+     */
+    private List getPackages(IPackage iPackage, List iPackages) {
+        INamedElement[] iNamedElements = iPackage.getOwnedElements();
+        for (int i = 0; i &lt; iNamedElements.length; i++) {
+            INamedElement iNamedElement = iNamedElements[i];
+            if (iNamedElement instanceof IPackage) {
+                iPackages.add(iNamedElement);
+                getPackages((IPackage)iNamedElement, iPackages);
+            }
+        }
+        return iPackages;
+    }
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+<br>
+<h4>How to get classes under Package</h4>
+You can get all model elements directly under the package in an array by calling getOwnedElements() and get only classes abstracted from it.<br>
+<br>
+ClassDefinitionBuilder.java<br>
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+    /**
+     * Get classes under the selected Package.
+     * 
+     * @param iPackage
+     *            Selected package
+     * @return the list of all stored classes
+     */
+    private List getIClasses(IPackage iPackage) {
+        List iClasses = new ArrayList();
+        INamedElement[] iNamedElements = iPackage.getOwnedElements();
+        for (int i = 0; i < iNamedElements.length; i++) {
+            INamedElement iNamedElement = iNamedElements[i];
+            if (iNamedElement instanceof IClass) {
+                iClasses.add(iNamedElement);
+            }
+        }
+        return iClasses;
+    }
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+<br>
+<h4>How to get Full Path Name of class</h4>
+You can get the name of class by calling getName() in case they are
+subclasses of INamedElement (i.g. IClass).<br>
+In addition, by calling getOwner() that obtains the owned model
+elements, you can get the Full Path name from the project model.<br>
+<br>
+ClassDefinitionBuilder.java<br>
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+    /**
+     * Get the class name with Full Path
+     * 
+     * @param iClass
+     *            Class
+     * @return Class name (Full Path)
+     */
+    private String getFullName(IClass iClass) {
+        StringBuffer sb = new StringBuffer();
+        IElement owner = iClass.getOwner();
+        while (owner != null && owner instanceof INamedElement && owner.getOwner() != null) {
+            sb.insert(0, ((INamedElement) owner).getName() + "::");
+            owner = owner.getOwner();
+        }
+        sb.append(iClass.getName());
+        return sb.toString();
+    }
+</samp></pre></td>
+</tr>
+</TABLE>
+<br>
+
+<h3>[Save as Project, Export/Import XMI]</h3>
+
+<h4>Export XMI</h4>
+Export JUDE Project file to XMI file (.xml). <br>
+<I>Export XMI function is not available in JUDE/Community.</I>
+<p>
+<I>Example of Export XMI</I>
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+import com.change_vision.jude.api.inf.project.ProjectAccessor;
+import com.change_vision.jude.api.inf.project.ProjectAccessorFactory;
+
+public class Test {
+  public static void main(String[] args) {
+	try {
+		ProjectAccessor prjAccessor = ProjectAccessorFactory.getProjectAccessor();
+
+		prjAccessor.open("C:\\API\\pro305.jude");      		
+		prjAccessor.exportXMI("C:\\API\\pro305_xmi.xml");
+		prjAccessor.close();
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+  }
+}</samp></pre>
+</td>
+</tr>
+</TABLE>
+<p>
+
+<h4>Import XMI</h4>
+Import XMI project file(.xml) to a JUDE project file.<br>
+<I>XMI Import function is not available in JUDE/Community.</I>
+<h4>Save as Project</h4>
+Save as a new project(.jude).
+
+<p>
+<I>Example of XMI Import and Save as Project</I>
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+import com.change_vision.jude.api.inf.project.ProjectAccessor;
+import com.change_vision.jude.api.inf.project.ProjectAccessorFactory;
+
+public class Test {
+  public static void main(String[] args) {
+	try {
+		ProjectAccessor prjAccessor = ProjectAccessorFactory.getProjectAccessor();
+
+		prjAccessor.importXMI("C:\\API\\pro305_xmi.xml");  
+		prjAccessor.saveAs("C:\\API\\pro305_2.jude"); 
+		prjAccessor.close();
+  		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+  }
+}
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+<p>
+
+<h3>Using Import/Export XMI in JUDE API</h3>
+JUDE API for Import/Export XMI is available with the following steps.
+<p>
+<I>Export JUDE project file to XMI - Edit - Import XMI - Save as JUDE project file.</I>
+
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+import com.change_vision.jude.api.inf.project.ProjectAccessor;
+import com.change_vision.jude.api.inf.project.ProjectAccessorFactory;
+
+public class Test {
+  public static void main(String[] args) {
+	try {
+		ProjectAccessor prjAccessor = ProjectAccessorFactory.getProjectAccessor();
+
+		prjAccessor.open("C:\\API\\pro305.jude");      		
+		prjAccessor.exportXMI("C:\\API\\pro305_xmi.xml");
+		prjAccessor.close();
+
+		// Edit
+
+		prjAccessor.importXMI("C:\\API\\pro305_xmi.xml");  
+		prjAccessor.saveAs("C:\\API\\pro305_2.jude"); 
+		prjAccessor.close();
+  		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+  }
+}
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+<p>
+
+<h3>[Expanded information about Model elements]</h3>
+
+<h4>What is the difference between UML metamodel and JUDE API?</h4>
+A part of the class structure of JUDE API is different from the one of UML metamodel.<br>
+JUDE API has a simplified structure. Some of abstract model elements in the UML metamodel
+inheritance structure are eliminated because they would never be instantiated as model elements.<br>
+Refer to <a href="javadoc/index.html">JUDE API JavaDoc</a> for more details.<br>
+
+<h4>Class elements contain Icon Notations</h4>
+Those elements that can be shown as normal class notations such as Actor, Interface,
+ Boundary, Entity, Control are classes that have stereotypes.<br>
+For example, Actor is a class that has a stereotype of "Actor", and Interface is a class
+that has a stereotype of "Interface".<br>
+<br>
+<h4>About TaggedValue(ITaggedValue)</h4>
+JUDE uses TaggedValus for derived information of Attributes and Role names, and expressions
+about UseCase descriptions.<br>
+<br>
+
+<h2>[Sample Applications]</h2>
+
+<h3>ClassDefinitionExporter</h3>
+Class information in JUDE Project File would be exported into CSV format.<br>
+There are 5 information of the class get exported; Class Full Path name, Attribute, Operation, 
+Definition, SuperClass, and Supplier of the realization.<br>
+<br>
+<br>
+<h4>How to compile</h4>
+Compilation can be done with your system command prompt or Java IDE (Integrated Development Environments)
+tool. The class path needs to be set to both of JUDE install folder and jude-api.jar that is 
+inside the same folder.<br>
+<br>
+Sample : Compiles using [compile.bat] that is a batch file for Windows command prompt<br>
+<br>
+<TABLE border="1">
+<tr>
+<td>
+C:\Program Files\JUDE-XXXXXXXXXX\api\sample\csvexporter&gt;compile<br>
+</td>
+</tr>
+</TABLE>
+<br>
+
+<br>
+<h4>How to Run</h4>
+Running can be done by specifying the JUDE project file name as
+the first parameter and the csv format file name where 
+is the target to export as the second parameter by using your system command prompt 
+or Java IDE (Integrated Development Environments) tool.
+The Class Path needs to be set to both of jude-api.jar and jude-community.jar(jude-pro.jar)
+that are in the install folder.<br>
+Also, memory option for Java environment needs to be set up in case the size of your JUDE 
+Project is large.<br>
+<br>
+Sample : Running using [run.bat] that is a batch file for Windows command prompt.<br>
+<br>
+<TABLE border="1">
+<tr>
+<td>
+C:\Program Files\JUDE-XXXXXXXXXX\api\sample\csvexporter&gt;run ..\APISample.jude APISample.csv<br>
+</td>
+</tr>
+</TABLE>
+<br>
+<br>
+<li><b>Source code for unit test of Package com.change_vision.jude.api.test.model</b><br>
+<br>
+This is a source code of unit test for JUDE API. Please refer to it when you use JUDE API.
+
+<hr>
+
+<h4>[Supported Models]</h4>
+<ul>
+<li><b>Supported Models are as below.</b><br>
+</ul>
+<br>
+Package(IPackage)<br>
+Subsystem(ISubsystem)<br>
+Model(IModel)<br>
+Class(IClass)<br>
+Attribute(IAttribute)<br>
+Operation(IOperation)<br>
+Parameter(IParameter)<br>
+Association(IAssociation)<br>
+AssociationClass(IAssociationClass)<br>
+Dependency(IDependency)<br>
+Generalization(IGeneralization)<br>
+Realization(IRealization)<br>
+UseCase(IUseCase)<br>
+Extend(IExtend)<br>
+ExtentionPoint(IExtentionPoint)<br>
+Include(IInclude)<br>
+TaggedValue(ITaggedValue)<br>
+Constraint(IConstraint)<br>
+MultiplictyRange(IMultiplicityRange)<br>
+Comment(IComment)<br>
+<br>
+*Stereotypes are treated as strings.<br>
+<b>*Please refer to <a href="javadoc/index.html">JUDE API JavaDoc</a> for details for
+each interface and Methods. </b>
+<br>
+
+<h4>[Restrictions]</h4>
+<ul>
+<li><b>Other models that are not included on the list and the Diagram infomation are not supported.
+</b><br>
+</ul>
+
+<hr>
+
+<br>
+</body>
+</html>
+

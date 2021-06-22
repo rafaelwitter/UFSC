@@ -1,0 +1,439 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+
+<html>
+
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <title>JUDE API 利用ガイド</title>
+</head>
+
+<body bgcolor="#F0F8FF">
+
+<h1>JUDE API 利用ガイド</h1>
+<P align="right">2007年1月31日<br>
+株式会社　チェンジビジョン</p>
+<hr>
+<br>
+<h2>【概要】</h2>
+JUDE APIは、JUDEのモデルデータを活用するアプリケーションソフトウェアを開発するための
+Javaインターフェース群です。<br>
+本ドキュメントでは、JUDE APIを利用したアプリケーションの開発方法について説明します。<br>
+<br>
+<h2>【使用許諾事項】</h2>
+<ul>
+<li>JUDE APIの.jar形式ファイルであるjude-api.jarの再配布を禁止します。
+<li>その他のJUDE API使用上の許諾事項は、「JUDE使用許諾契約書」に準じます。
+</ul>
+<h2>【JUDE API利用要件】</h2>
+JUDE APIを利用したアプリケーションソフトウェアを実行するには、JUDEを実行できる環境が必要です。<br>
+<ul>
+<li>JUDEを実行可能なJava実行環境
+<li>JUDEソフトウェア本体がインストールされていること
+<ul>
+<li>アプリケーションのコンパイルには、jude-api.jarが必要
+<li>アプリケーションの実行には、jude-api.jarと、jude-pro.jarもしくはjude-community.jarが必要
+<li>実行時に大きなJUDEプロジェクトファイルを扱う場合は、Java VMのメモリ管理オプション設定が必要
+<br><b>（VMの起動オプションとしての初期ヒープサイズ16Mバイト、最大ヒープサイズ256Mバイト、
+スタックサイズ2Mバイトを指定する例）<br>
+-Xms16m -Xmx256m -Xss2m</b>
+</ul>
+</ul>
+<br>
+<h2>【機能】</h2>
+JUDE APIを用いることにより、JUDEのモデル要素を取得して、アプリケーションソフトウェア上で
+利用することができます。<br>
+現在は、クラス図とユースケース図で用いられるモデル要素の参照をサポートしています。
+今後、他の図で用いられるモデル要素の参照や、図要素の参照、モデル要素や図要素の編集などを
+サポートしていく予定です。
+<br>
+
+<h3>【モデル情報の取得方法】</h3>
+ここでは、モデル情報の取得方法をクラス図やオブジェクト図、またはサンプルプログラムを
+併用して、わかりやすく一部の例を紹介します。<br>
+<b>各インターフェース、メソッドの詳細については、<a href="javadoc/index.html">
+JUDE APIのJavaDoc</a>をご覧ください。</b>
+
+<h4>クラスの属性情報の取得</h4>
+クラス(IClass)のメソッドgetAttributes()を用いることによって、属性(IAttribute)の配列を取得
+できます。クラスが他のクラスと関連している場合、属性情報オブジェクトには関連端の情報も
+含まれます。<br>
+例えば、Class0が属性attribute0とClass1への関連（関連端のロール名class1）を持っている場合の
+情報は、
+<a href="png\IAttribute_IAssociation.png">図</a>の様になります。<br>
+<br>
+<h4>クラスの操作情報の取得</h4>
+クラス(IClass)のメソッドgetOperations()を利用することによって、操作(IOperation)の配列を取得
+できます。<br>
+<br>
+<h4>クラスの依存情報の取得</h4>
+クラス(IClass)のメソッドgetClientDependencies()を利用することによって、そのクラスが依存す
+るクラスに繋がる依存(IDependency)の配列を取得できます。それらに対しメソッドgetSupplier()を
+用いることにより、依存元のクラスを取得することができます。<br>
+例えば、Class0がClass1に依存している場合の情報は、
+<a href="png\IDependency.png">図</a>の様になります。<br>
+<br>
+<h4>クラスの実現情報の取得</h4>
+クラス(IClass)のメソッドgetClientRealizations()を利用することによって、そのクラスが実現して
+いるインターフェースクラスに繋がる実現(IRealization)の配列を取得できます。それらに対し
+メソッドgetSupplier()を用いることにより、実現されているインターフェースクラスを取得する
+ことができます。<br>
+例えば、Class1がClass0を実現している場合の情報は、
+<a href="png\IRealization.png">図</a>の様になります。<br>
+<br>
+<h4>クラスの汎化情報の取得</h4>
+クラス(IClass)のメソッドgetGeneralizations()を利用することによって、そのクラスの
+スーパークラスに繋がる汎化(IGeneralization)の配列を取得できます。それらの汎化に対し
+メソッドgetSuperType()を用いることにより、スーパークラスを取得することができます。<br>
+例えば、Class1がClass0を継承している場合の情報は、
+<a href="png\IGeneralization.png">図</a>の様になります。<br>
+<br>
+<h4>プロジェクトを表す（起点となる）モデルの取得</h4>
+JUDEプロジェクトファイルの全てのモデル情報は、プロジェクトを表すモデル（以下、
+プロジェクトモデル）の下にツリー状に存在します。<br>
+まず、ProjectAccessorオブジェクトを取得して、JUDEプロジェクトファイルを開き、
+プロジェクトモデル(IModelクラスのオブジェクト)を取得します。<br>
+<br>
+ClassDefinitionBuilder.javaより<br>
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+        // プロジェクトを開いて、プロジェクトモデルを取得する
+        ProjectAccessor prjAccessor = ProjectAccessorFactory.getProjectAccessor();
+        prjAccessor.open(inputFile);
+        IModel iModel = prjAccessor.getProject();
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+<br>
+<br>
+<h4>パッケージ配下のパッケージを、再帰的に全て取得</h4>
+ここでは、パッケージ(IPackage)を継承するサブシステムやモデルも、パッケージに含めます。<br>
+パッケージ(IPackage)の直下にある全てのモデル要素を、メソッドgetOwnedElements()の利用により
+配列として取得し、その中からパッケージだけを抽出します。また、取得したパッケージに対しても
+同様の処理を行い、再帰的に全てのパッケージを取得します。<br>
+<br>
+ClassDefinitionBuilder.javaより<br>
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+    /**
+     * 指定パッケージ配下のパッケージを、再帰的に全て取得する。
+     * 
+     * @param iPackage
+     *            指定パッケージ
+     * @param iPackages
+     *            パッケージ一覧を格納するリスト
+     * @return パッケージ一覧を格納したリスト
+     */
+    private List getPackages(IPackage iPackage, List iPackages) {
+        INamedElement[] iNamedElements = iPackage.getOwnedElements();
+        for (int i = 0; i &lt; iNamedElements.length; i++) {
+            INamedElement iNamedElement = iNamedElements[i];
+            if (iNamedElement instanceof IPackage) {
+                iPackages.add(iNamedElement);
+                getPackages((IPackage)iNamedElement, iPackages);
+            }
+        }
+        return iPackages;
+    }
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+<br>
+<h4>パッケージ配下のクラスの取得</h4>
+パッケージ(IPackage)の直下にある全てのモデル要素を、メソッドgetOwnedElements()を用いること
+により配列として取得し、その中からクラスだけを抽出します。<br>
+<br>
+ClassDefinitionBuilder.javaより<br>
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+    /**
+     * 指定パッケージ配下のクラスを取得する。
+     * 
+     * @param iPackage
+     *            指定パッケージ
+     * @return クラス一覧を格納したリスト
+     */
+    private List getIClasses(IPackage iPackage) {
+        List iClasses = new ArrayList();
+        INamedElement[] iNamedElements = iPackage.getOwnedElements();
+        for (int i = 0; i < iNamedElements.length; i++) {
+            INamedElement iNamedElement = iNamedElements[i];
+            if (iNamedElement instanceof IClass) {
+                iClasses.add(iNamedElement);
+            }
+        }
+        return iClasses;
+    }
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+<br>
+<h4>クラスのフルパス名の取得</h4>
+クラス(IClass)を含め、INamedElementのサブクラスの場合、メソッドgetName()を用いることで、
+名前を取得することができます。<br>
+さらに、自分を所有するモデル要素を所得するメソッドgetOwner()を組み合わせることによって、
+プロジェクトモデルからのフルパス名を取得することができます。<br>
+<br>
+ClassDefinitionBuilder.javaより<br>
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+    /**
+     * クラスの名前をフルパスで取得する
+     * 
+     * @param iClass
+     *            クラス
+     * @return クラス名（フルパス）
+     */
+    private String getFullName(IClass iClass) {
+        StringBuffer sb = new StringBuffer();
+        IElement owner = iClass.getOwner();
+        while (owner != null && owner instanceof INamedElement && owner.getOwner() != null) {
+            sb.insert(0, ((INamedElement) owner).getName() + "::");
+            owner = owner.getOwner();
+        }
+        sb.append(iClass.getName());
+        return sb.toString();
+    }
+</samp></pre></td>
+</tr>
+</TABLE>
+<br>
+
+<h3>【ファイルの別名保存、XMI入出力について】</h3>
+
+<h4>XMIエクスポート</h4>
+JUDEプロジェクトファイルを指定したXMIファイル名(.xml)でエクスポートします。<br>
+XMIエクスポートはJUDE/Communityではご使用になれません。
+<p>
+<I>XMIエクスポートの例</I>
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+import com.change_vision.jude.api.inf.project.ProjectAccessor;
+import com.change_vision.jude.api.inf.project.ProjectAccessorFactory;
+
+public class Test {
+  public static void main(String[] args) {
+	try {
+		ProjectAccessor prjAccessor = ProjectAccessorFactory.getProjectAccessor();
+
+		prjAccessor.open("C:\\API\\pro305.jude");      		
+		prjAccessor.exportXMI("C:\\API\\pro305_xmi.xml");
+		prjAccessor.close();
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+  }
+}</samp></pre>
+</td>
+</tr>
+</TABLE>
+<p>
+
+<h4>XMIインポート</h4>
+XMIプロジェクトファイル(.xml)をJUDEプロジェクトファイルにインポートします。<br>
+XMIインポートはJUDE/Communityではご使用になれません。
+<h4>プロジェクトの別名保存</h4>
+保存するファイル名(.jude)を指定し、プロジェクトを別名で保存します。
+
+<p>
+<I>XMIインポートとプロジェクトの別名保存の例</I>
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+import com.change_vision.jude.api.inf.project.ProjectAccessor;
+import com.change_vision.jude.api.inf.project.ProjectAccessorFactory;
+
+public class Test {
+  public static void main(String[] args) {
+	try {
+		ProjectAccessor prjAccessor = ProjectAccessorFactory.getProjectAccessor();
+
+		prjAccessor.importXMI("C:\\API\\pro305_xmi.xml");  
+		prjAccessor.saveAs("C:\\API\\pro305_2.jude"); 
+		prjAccessor.close();
+  		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+  }
+}
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+<p>
+
+<h3>【JUDE API でXMI入出力を利用する】</h3>
+以下の流れでXMI入出力のJUDE APIを利用することができます。
+<p>
+<I>JUDEプロジェクトファイルのXMI出力　→　加工　→　XMI入力　→　JUDEプロジェクトファイルとして保存</I>
+
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+import com.change_vision.jude.api.inf.project.ProjectAccessor;
+import com.change_vision.jude.api.inf.project.ProjectAccessorFactory;
+
+public class Test {
+  public static void main(String[] args) {
+	try {
+		ProjectAccessor prjAccessor = ProjectAccessorFactory.getProjectAccessor();
+
+		prjAccessor.open("C:\\API\\pro305.jude");      		
+		prjAccessor.exportXMI("C:\\API\\pro305_xmi.xml");
+		prjAccessor.close();
+
+		// 加工
+
+		prjAccessor.importXMI("C:\\API\\pro305_xmi.xml");  
+		prjAccessor.saveAs("C:\\API\\pro305_2.jude"); 
+		prjAccessor.close();
+  		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+  }
+}
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+<p>
+
+<h3>【モデル要素に関する補足事項】</h3>
+
+<h4>UMLのメタモデルとの違いについて</h4>
+JUDE API自身のクラス構造は、UMLメタモデルの継承構造とは異なる部分があります。<br>
+UMLメタモデルの継承構造から、実際にモデル要素としてインスタンス化されることのない
+抽象的なモデル要素の一部を継承ツリーから省いて、簡素化した構造になっています。<br>
+詳細については、<a href="javadoc/index.html">JUDE APIのJavaDoc</a>を参照してください。<br>
+
+<h4>アイコン形状を持つクラス要素</h4>
+アクター、インターフェース、バウンダリー、エンティティ、コントロールなどの
+通常のクラスとしての表記も可能な要素は、ステレオタイプを持ったクラスです。<br>
+例えば、アクターは"Actor"というステレオタイプを持った、インターフェースは
+"Interface"というステレオタイプを持ったクラスです。<br>
+<br>
+<h4>タグ付き値(ITaggedValue)について</h4>
+JUDEでは、タグ付き値を属性やロール名の派生情報やユースケース記述の表現などに
+用いています。<br>
+<br>
+
+<h2>【サンプルアプリケーションの説明】</h2>
+
+<h3>ClassDefinitionExporter</h3>
+JUDEプロジェクトファイルに含まれるクラスの情報を、CSV形式で出力します。<br>
+クラスのフルパス名、属性および操作、定義、継承元、実現元の５つの項目が出力されます。<br>
+<br>
+<br>
+<h4>コンパイルの方法</h4>
+利用するシステムのコマンドプロンプト、もしくはJavaのIDEツール（統合開発環境）などで、
+コンパイルします。この時、JUDEのインストールフォルダと、インストールフォルダに含まれるjude-api.jarに
+クラスパスを通す必要があります。<br>
+<br>
+サンプル:Windowsコマンドプロンプト用のバッチファイルcompile.batを用いたコンパイル方法<br>
+<br>
+<TABLE border="1">
+<tr>
+<td>
+C:\Program Files\JUDE-XXXXXXXXXX\api\sample\csvexporter&gt;compile<br>
+</td>
+</tr>
+</TABLE>
+<br>
+
+<br>
+<h4>実行の方法</h4>
+利用するシステムのコマンドプロンプト、もしくはJavaのIDEツール（統合開発環境）などで、
+第一引数としてJUDEプロジェクトファイル名を、第二引数として出力先となるcsv形式ファイル名を
+指定して実行します。この時、インストールフォルダに含まれるjude-api.jarとjude-community.jar(jude-pro.jar)に
+クラスパスを通す必要があります。<br>
+また、大きなJUDEプロジェクトファイルを扱う場合は、java実行環境に対するメモリーオプションを
+指定する必要があります。<br>
+<br>
+サンプル:Windowsコマンドプロンプト用のバッチファイルrun.batを用いた実行方法<br>
+<br>
+<TABLE border="1">
+<tr>
+<td>
+C:\Program Files\JUDE-XXXXXXXXXX\api\sample\csvexporter&gt;run ..\APISample.jude APISample.csv<br>
+</td>
+</tr>
+</TABLE>
+<br>
+<br>
+<li><b>パッケージcom.change_vision.jude.api.test.modelのユニットテストのソースコード</b><br>
+<br>
+JUDE APIのユニットテストのソースコードです。JUDE APIを利用する上での参考としてご利用
+いただけます。
+
+<hr>
+
+<h2>【JUDE Enterpriseユーザーの方へ　JUDE API更新情報】　</h2>
+<h4>＊JUDE Enterpriseはversion3.0よりJUDE Professionalに統合されました。</h4>
+<br>　　　　　　　　　　　　　　　　　　　　　　　　　
+<h3>JUDE Enterprise version 2.5 付属分</h3>
+ 株式会社チェンジビジョンへのJUDE業務移管に伴い、APIのパッケージをcom.change_vision.jude.apiに変更。<br>
+ （旧パッケージであるJP.co.esm.caddies.jomt.judeapi内のクラス、フィールド、メソッドも残りますが、今後は非推奨となります。）<br>
+<br>
+<h3>JUDE Enterprise version 2.4.1 付属分（新規作成）</h3>
+<br>
+
+<h4>【対応モデル】</h4>
+<ul>
+<li><b>下記のモデル情報の取扱いに対応します。</b><br>
+</ul>
+<br>
+パッケージ(IPackage)<br>
+サブシステム(ISubsystem)<br>
+モデル(IModel)<br>
+クラス(IClass)<br>
+属性(IAttribute)<br>
+操作(IOperation)<br>
+引数(IParameter)<br>
+関連(IAssociation)<br>
+関連クラス(IAssociationClass)<br>
+依存(IDependency)<br>
+汎化(IGeneralization)<br>
+実現(IRealization)<br>
+ユースケース(IUseCase)<br>
+拡張(IExtend)<br>
+拡張点(IExtentionPoint)<br>
+包含(IInclude)<br>
+タグ付き値(ITaggedValue)<br>
+制約(IConstraint)<br>
+多重度(IMultiplicityRange)<br>
+コメント(IComment)<br>
+<br>
+※ステレオタイプは、文字列として扱われます。<br>
+<b>※各インターフェース、メソッドの詳細については、
+<a href="javadoc/index.html">JUDE APIのJavaDoc</a>を参照してください。</b>
+<br>
+
+<h4>【制約事項】</h4>
+<ul>
+<li><b>上記以外の種類のモデル情報は取扱いできません。（上記の種類のモデルの図情報も含め、
+無いものとして扱われます。）</b><br>
+</ul>
+
+<hr>
+
+<br>
+</body>
+</html>
+
