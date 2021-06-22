@@ -1,0 +1,3 @@
+/home/ducker/Desktop/UFSC/EDD/P2_Pratica/CMakeFiles/rebuild_cache.dir
+/home/ducker/Desktop/UFSC/EDD/P2_Pratica/CMakeFiles/edit_cache.dir
+/home/ducker/Desktop/UFSC/EDD/P2_Pratica/CMakeFiles/runTests.dir

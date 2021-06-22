@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ducker/Desktop/UFSC/EDD/P2_Pratica/array_list.h
+cstdint
+-
+stdexcept
+-
+
+/home/ducker/Desktop/UFSC/EDD/P2_Pratica/binary_tree.h
+./array_list.h
+/home/ducker/Desktop/UFSC/EDD/P2_Pratica/array_list.h
+climits
+-
+
+/home/ducker/Desktop/UFSC/EDD/P2_Pratica/tests.cpp
+string
+-
+vector
+-
+gtest/gtest.h
+-
+binary_tree.h
+/home/ducker/Desktop/UFSC/EDD/P2_Pratica/binary_tree.h
+
